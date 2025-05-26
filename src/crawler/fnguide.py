@@ -10,6 +10,7 @@ from config.config import (
     ITEM_DETAIL_URL, 
     DATA_DIR, 
     BASE_URL, 
+    LOGIN_URL,
     USERNAME, 
     PASSWORD,
     SELECTORS,
@@ -19,7 +20,7 @@ import time
 # from auth import login
 
 class FnGuideCrawler(BaseCrawler):
-    def __init__(self, headless=True, debug_mode=False):
+    def __init__(self, headless=True, debug_mode=False, skip_step=0):
         """
         FnGuide 크롤러 초기화
         
@@ -29,11 +30,14 @@ class FnGuideCrawler(BaseCrawler):
         """
         super().__init__(headless)
         self.debug_mode = debug_mode
+        self.skip_step = skip_step
         
-    def _wait_debug_step(self, step_name):
-        """디버그 모드에서 사용자 입력 대기"""
-        if self.debug_mode:
-            input(f"\n[디버그 모드] '{step_name}' 단계 완료. 계속하려면 Enter를 누르세요...")
+    def _wait_debug_step(self, step_name, step=1):
+        """디버그 모드에서 사용자 입력 대기
+        step 값이 0이면 모든 단계에서 대기
+        """
+        if self.debug_mode and self.skip_step <= step:
+            input(f"\n[디버그 모드] '{step_name}' 단계 준비 완료. 계속하려면 Enter를 누르세요...")
         
     def login(self):
         """
@@ -48,23 +52,21 @@ class FnGuideCrawler(BaseCrawler):
         def login_process():
             try:
                 # 로그인 페이지로 이동
-                self.get_page(BASE_URL)
+                self.get_page(LOGIN_URL)
                 
                 # ID 입력
                 id_field = self.wait_for_element(
-                    By.CSS_SELECTOR, 
+                    By.CSS_SELECTOR,
                     SELECTORS['login']['id_field']
                 )
                 if not id_field:
                     self.logger.error("ID 입력 필드를 찾을 수 없습니다.")
                     return False
                 
-                id_field.clear()
-                id_field.send_keys(USERNAME)
+                self._wait_debug_step("ID 입력")
+                # id_field.clear()
+                id_field.send_keys(str(USERNAME))
                 
-                if self.debug_mode:
-                    self.logger.info("ID 입력 완료")
-                    
                 # 비밀번호 입력
                 pw_field = self.wait_for_element(
                     By.CSS_SELECTOR, 
@@ -74,11 +76,9 @@ class FnGuideCrawler(BaseCrawler):
                     self.logger.error("비밀번호 입력 필드를 찾을 수 없습니다.")
                     return False
                 
+                self._wait_debug_step("비밀번호 입력")
                 pw_field.clear()
                 pw_field.send_keys(PASSWORD + Keys.RETURN)  # 비밀번호 입력 후 Enter 키 입력
-                
-                if self.debug_mode:
-                    self.logger.info("비밀번호 입력 및 로그인 시도 완료")
                 
                 # 로그인 버튼 클릭
                 submit_button = self.wait_for_element(
@@ -88,7 +88,8 @@ class FnGuideCrawler(BaseCrawler):
                 if not submit_button:
                     self.logger.error("로그인 버튼을 찾을 수 없습니다.")
                     return False
-                    
+                
+                self._wait_debug_step("로그인 버튼 클릭")
                 submit_button.click()
                 return True
                 
@@ -96,8 +97,8 @@ class FnGuideCrawler(BaseCrawler):
                 self.logger.error(f"로그인 프로세스 중 오류 발생: {str(e)}")
                 return False
                 
+        self._wait_debug_step("로그인 시도")
         result = login_process()
-        self._wait_debug_step("로그인")
         return result
     
     def get_item_detail(self, stock_code):
@@ -112,19 +113,21 @@ class FnGuideCrawler(BaseCrawler):
         """
         if self.debug_mode:
             self.logger.info(f"[디버그 모드] 종목 {stock_code} 상세정보 조회 시작")
-            
-        # 로그인 상태 확인
-        if not self.login_manager.ensure_logged_in():
-            return None
-            
+        
+        self._wait_debug_step("페이지 로딩", 2)
         # 종목 상세 페이지로 이동
         url = f"{ITEM_DETAIL_URL}"
         if not self.get_page(url):
             return None
             
-        self._wait_debug_step("페이지 로딩")
-        
+        data = {
+                'stock_code': stock_code,
+                'stock_name': None,
+                'sales': None,
+                'operating_profit': None
+            }
         try:
+            self._wait_debug_step("검색창 입력", 2)
             # 검색 창 찾기
             search_input = self.wait_for_element(By.ID, "txtSearchWd")
             if not search_input:
@@ -133,105 +136,67 @@ class FnGuideCrawler(BaseCrawler):
             # 검색창에 종목코드 입력
             search_input.clear()
             search_input.send_keys(stock_code)
+            time.sleep(1)  # 1초의 간격을 넣습니다.
+            self._wait_debug_step("검색창 입력 엔터", 2)
             search_input.send_keys(Keys.RETURN)
             
             time.sleep(REQUEST_DELAY)  # 검색 결과 로딩 대기
             
+            self._wait_debug_step("콘텐츠 로딩", 2)
             # 콘텐츠 로딩 대기
+            time.sleep(1)  # 1초의 간격을 넣습니다.
             content_loaded = self.wait_for_element(By.ID, "txtSearchWd")
             if not content_loaded:
                 self.logger.error(f"종목 {stock_code}의 콘텐츠 로딩 실패")
                 return None
                 
-            self._wait_debug_step("콘텐츠 로딩")
-            
+            self._wait_debug_step("데이터 추출", 2)
             # BeautifulSoup으로 데이터 추출
+            time.sleep(1)  # 1초의 간격을 넣습니다.
             soup = BeautifulSoup(self.driver.page_source, 'lxml')
             
             # 기본 정보 추출
+            time.sleep(1)  # 1초의 간격을 넣습니다.
+            sales, profit = self._extract_sales_and_operating_profit(soup)
+            stock_name = search_input.get_attribute('value')
+            print("stock_name: ", stock_name)
+            self._wait_debug_step("데이터 저장", 2)
             data = {
                 'stock_code': stock_code,
-                'timestamp': datetime.now().isoformat(),
-                'company_name': self._extract_company_name(soup),
-                'current_price': self._extract_current_price(soup),
-                'financial_info': self._extract_financial_info(soup),
-                'trading_info': self._extract_trading_info(soup)
-            }
-            
-            self._wait_debug_step("데이터 추출")
-            
-            # CSV 파일로 저장
-            self._save_to_csv(data, stock_code)
-            
-            self._wait_debug_step("데이터 저장")
-            
+                'stock_name': stock_name,
+                'sales': sales,
+                'operating_profit': profit
+            }            
             return data
-            
+
         except Exception as e:
             self.logger.error(f"종목 {stock_code} 데이터 추출 실패: {str(e)}")
             return None
             
-    def _extract_company_name(self, soup):
-        """회사명 추출"""
+    
+
+    def _extract_sales_and_operating_profit(self, soup):
+        """매출액과 영업이익 추출"""
         try:
-            name_element = soup.find('h1', class_='company-name')
-            return name_element.text.strip() if name_element else None
-        except Exception as e:
-            self.logger.warning(f"회사명 추출 실패: {str(e)}")
-            return None
+            sales = soup.select_one('#contents > table > tbody > tr:nth-child(4) > td:nth-child(2)')
+            operating_profit = soup.select_one('#contents > table > tbody > tr:nth-child(4) > td:nth-child(3)')
             
-    def _extract_current_price(self, soup):
-        """현재가 추출"""
-        try:
-            price_element = soup.find('div', class_='current-price')
-            return float(price_element.text.strip().replace(',', '')) if price_element else None
-        except Exception as e:
-            self.logger.warning(f"현재가 추출 실패: {str(e)}")
-            return None
+            def convert_to_number(value_str):
+                if not value_str:
+                    return None
+                # 쉼표 제거 후 숫자로 변환
+                try:
+                    return float(value_str.replace(',', ''))
+                except ValueError:
+                    return None
             
-    def _extract_financial_info(self, soup):
-        """
-        재무 정보 추출
-        
-        Note: FnGuide 웹사이트의 실제 HTML 구조에 맞게 수정 필요
-        """
-        try:
-            financial_data = {}
-            financial_table = soup.find('table', class_='financial-info')
-            if financial_table:
-                rows = financial_table.find_all('tr')
-                for row in rows:
-                    cols = row.find_all(['th', 'td'])
-                    if len(cols) >= 2:
-                        key = cols[0].text.strip()
-                        value = cols[1].text.strip()
-                        financial_data[key] = value
-            return financial_data
-        except Exception as e:
-            self.logger.warning(f"재무 정보 추출 실패: {str(e)}")
-            return {}
+            sales_value = convert_to_number(sales.text.strip() if sales else None)
+            operating_profit_value = convert_to_number(operating_profit.text.strip() if operating_profit else None)
             
-    def _extract_trading_info(self, soup):
-        """
-        거래 정보 추출
-        
-        Note: FnGuide 웹사이트의 실제 HTML 구조에 맞게 수정 필요
-        """
-        try:
-            trading_data = {}
-            trading_table = soup.find('table', class_='trading-info')
-            if trading_table:
-                rows = trading_table.find_all('tr')
-                for row in rows:
-                    cols = row.find_all(['th', 'td'])
-                    if len(cols) >= 2:
-                        key = cols[0].text.strip()
-                        value = cols[1].text.strip()
-                        trading_data[key] = value
-            return trading_data
+            return (sales_value, operating_profit_value)
         except Exception as e:
-            self.logger.warning(f"거래 정보 추출 실패: {str(e)}")
-            return {}
+            self.logger.warning(f"매출액/영업이익 추출 실패: {str(e)}")
+            return (None, None)
             
     def _save_to_csv(self, data, stock_code):
         """

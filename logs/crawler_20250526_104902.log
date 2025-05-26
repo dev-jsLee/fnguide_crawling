@@ -1,0 +1,15 @@
+2025-05-26 10:49:02,738 - INFO - 크롤링 시작
+2025-05-26 10:49:02,739 - INFO - 총 3개의 종목코드를 읽었습니다.
+2025-05-26 10:49:02,740 - INFO - ====== WebDriver manager ======
+2025-05-26 10:49:08,113 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 10:49:08,196 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 10:49:08,228 - INFO - Driver [C:\Users\mirac\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 10:49:16,077 - INFO - 로그인 성공
+2025-05-26 10:49:16,078 - INFO - 종목 000660 데이터 수집 시작
+2025-05-26 10:49:25,396 - INFO - 종목 000660 데이터 수집 완료
+2025-05-26 10:49:25,398 - INFO - 종목 005930 데이터 수집 시작
+2025-05-26 10:49:34,635 - INFO - 종목 005930 데이터 수집 완료
+2025-05-26 10:49:34,636 - INFO - 종목 035420 데이터 수집 시작
+2025-05-26 10:49:44,067 - INFO - 종목 035420 데이터 수집 완료
+2025-05-26 10:49:44,069 - INFO - 수집된 데이터를 collected_data_20250526_104944.csv 파일로 내보냈습니다.
+2025-05-26 10:49:46,323 - INFO - 크롤링 종료

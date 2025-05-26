@@ -1,0 +1,6 @@
+2025-05-26 10:48:30,770 - INFO - 크롤링 시작
+2025-05-26 10:48:30,771 - INFO - 총 3개의 종목코드를 읽었습니다.
+2025-05-26 10:48:30,771 - INFO - ====== WebDriver manager ======
+2025-05-26 10:48:36,374 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 10:48:36,450 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 10:48:36,493 - INFO - Driver [C:\Users\mirac\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache

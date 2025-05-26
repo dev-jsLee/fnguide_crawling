@@ -17,14 +17,15 @@ def main(debug=False):
     
     try:
         # 크롤러 초기화 (headless=False로 설정하여 브라우저 표시)
-        with FnGuideCrawler(headless=False, debug_mode=debug) as crawler:
+        with FnGuideCrawler(headless=False, debug_mode=debug, skip_step=2) as crawler:
             # 로그인 시도
             if not crawler.login():
                 logger.error("로그인 실패")
                 return
-                
+            print("로그인 성공 in main.py")
+
             # 삼성전자 종목 정보 가져오기
-            stock_code = "005930"  # 삼성전자
+            stock_code = "000660"  # SK하이닉스
             data = crawler.get_item_detail(stock_code)
             
             if data:

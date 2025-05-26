@@ -1,0 +1,54 @@
+2025-05-26 09:12:38,616 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-26 09:13:13,604 - src.crawler.base - WARNING - 요소 대기 시간 초과 css selector=#txtID
+2025-05-26 09:13:13,605 - src.crawler.base - ERROR - ID 입력 필드를 찾을 수 없습니다.
+2025-05-26 09:20:28,834 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-26 09:20:33,528 - src.crawler.base - INFO - ID 입력 완료
+2025-05-26 09:20:34,251 - src.crawler.base - INFO - 비밀번호 입력 및 로그인 시도 완료
+2025-05-26 09:21:05,415 - src.crawler.base - WARNING - 요소 대기 시간 초과 css selector=#divLogin > div.lay--popFooter > form > button.btn--back
+2025-05-26 09:21:05,416 - src.crawler.base - ERROR - 로그인 버튼을 찾을 수 없습니다.
+2025-05-26 09:25:44,965 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-26 09:30:22,394 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-26 09:32:00,958 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-26 09:36:53,686 - src.crawler.base - WARNING - 요소 대기 시간 초과 css selector=#divLogin > div.lay--popFooter > form > button.btn--back
+2025-05-26 09:36:53,689 - src.crawler.base - ERROR - 로그인 버튼을 찾을 수 없습니다.
+2025-05-26 09:38:00,483 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-26 09:38:28,909 - src.crawler.base - ERROR - 로그인 프로세스 중 오류 발생: ('Connection aborted.', ConnectionResetError(10054, '현재 연결은 원격 호스트에 의해 강제로 끊겼습니다', None, 10054, None))
+2025-05-26 09:39:26,498 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-26 09:43:52,328 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-26 09:44:58,671 - src.crawler.base - INFO - [디버그 모드] 종목 005930 상세정보 조회 시작
+2025-05-26 09:45:01,029 - src.crawler.base - ERROR - 오류 발생: AttributeError: 'FnGuideCrawler' object has no attribute 'login_manager'
+2025-05-26 09:45:56,886 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-26 09:46:25,849 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-26 09:47:45,336 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-26 09:48:27,530 - src.crawler.base - INFO - [디버그 모드] 종목 005930 상세정보 조회 시작
+2025-05-26 09:50:15,715 - src.crawler.base - INFO - 데이터 저장 완료: d:\fnguide\data\005930_20250526_095015.csv
+2025-05-26 09:51:30,320 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-26 09:54:33,782 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-26 09:55:32,040 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-26 09:55:48,855 - src.crawler.base - INFO - [디버그 모드] 종목 000660 상세정보 조회 시작
+2025-05-26 09:55:54,578 - src.crawler.base - INFO - 데이터 저장 완료: d:\fnguide\data\000660_20250526_095554.csv
+2025-05-26 09:56:44,674 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-26 09:58:06,056 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-26 09:59:03,360 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-26 10:00:21,009 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-26 10:00:28,138 - src.crawler.base - INFO - [디버그 모드] 종목 000660 상세정보 조회 시작
+2025-05-26 10:05:00,364 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-26 10:05:06,875 - src.crawler.base - INFO - [디버그 모드] 종목 000660 상세정보 조회 시작
+2025-05-26 10:05:30,856 - src.crawler.base - INFO - 데이터 저장 완료: d:\fnguide\data\000660_20250526_100530.csv
+2025-05-26 10:22:00,296 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-26 10:22:08,597 - src.crawler.base - INFO - [디버그 모드] 종목 000660 상세정보 조회 시작
+2025-05-26 10:22:31,470 - src.crawler.base - INFO - 데이터 저장 완료: d:\fnguide\data\000660_20250526_102231.csv
+2025-05-26 10:24:09,186 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-26 10:24:16,304 - src.crawler.base - INFO - [디버그 모드] 종목 000660 상세정보 조회 시작
+2025-05-26 10:24:35,099 - src.crawler.base - INFO - 데이터 저장 완료: d:\fnguide\data\000660_20250526_102435.csv
+2025-05-26 10:25:20,221 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-26 10:25:27,444 - src.crawler.base - INFO - [디버그 모드] 종목 000660 상세정보 조회 시작
+2025-05-26 10:25:44,988 - src.crawler.base - INFO - 데이터 저장 완료: d:\fnguide\data\000660_20250526_102544.csv
+2025-05-26 10:28:33,384 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-26 10:28:40,314 - src.crawler.base - INFO - [디버그 모드] 종목 000660 상세정보 조회 시작
+2025-05-26 10:29:23,185 - src.crawler.base - INFO - 데이터 저장 완료: d:\fnguide\data\000660_20250526_102923.csv
+2025-05-26 10:36:33,580 - src.crawler.base - INFO - 데이터 저장 완료: d:\fnguide\data\000660_20250526_103633.csv
+2025-05-26 10:39:37,790 - src.crawler.base - INFO - 데이터 저장 완료: d:\fnguide\data\000660_20250526_103937.csv
+2025-05-26 10:41:14,570 - src.crawler.base - INFO - 데이터 저장 완료: d:\fnguide\data\000660_20250526_104114.csv
+2025-05-26 10:41:24,566 - src.crawler.base - INFO - 데이터 저장 완료: d:\fnguide\data\005930_20250526_104124.csv
+2025-05-26 10:41:33,939 - src.crawler.base - INFO - 데이터 저장 완료: d:\fnguide\data\035420_20250526_104133.csv

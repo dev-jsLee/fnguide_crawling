@@ -20,7 +20,8 @@ SELECTORS = {
         'id_field': "#txtID",
         'pw_field': "#txtPW",
         'submit_button': "#divLogin > div.lay--popFooter > form > button.btn--back",
-        'success_check': ".user-profile, .welcome-message"
+        'success_check': ".user-profile, .welcome-message",
+        'search_button': "#divAutoComp > div.result > ul > li > button"
     }
 }
 

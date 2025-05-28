@@ -52,3 +52,7 @@
 2025-05-26 10:41:14,570 - src.crawler.base - INFO - 데이터 저장 완료: d:\fnguide\data\000660_20250526_104114.csv
 2025-05-26 10:41:24,566 - src.crawler.base - INFO - 데이터 저장 완료: d:\fnguide\data\005930_20250526_104124.csv
 2025-05-26 10:41:33,939 - src.crawler.base - INFO - 데이터 저장 완료: d:\fnguide\data\035420_20250526_104133.csv
+2025-05-28 09:09:11,605 - src.crawler.base - WARNING - 요소 대기 시간 초과 css selector=#divLogin > div.lay--popFooter > form > button.btn--back
+2025-05-28 09:09:11,608 - src.crawler.base - ERROR - 로그인 버튼을 찾을 수 없습니다.
+2025-05-28 09:12:40,640 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-28 09:13:00,949 - src.crawler.base - INFO - [디버그 모드] 종목 000660 상세정보 조회 시작

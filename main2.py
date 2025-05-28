@@ -2,26 +2,27 @@ import os
 from src.crawler.fnguide import FnGuideCrawler
 import logging
 from datetime import datetime
+from src.config.config import CRAWLER_CONFIG, FILE_PATHS, LOGGING_CONFIG, CSV_CONFIG
 
 def setup_logging():
     """로깅 설정"""
-    log_dir = 'logs'
+    log_dir = FILE_PATHS['log_dir']
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)
         
     log_file = os.path.join(log_dir, f'crawler_{datetime.now().strftime("%Y%m%d_%H%M%S")}.log')
     
     logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(levelname)s - %(message)s',
+        level=getattr(logging, LOGGING_CONFIG['level']),
+        format=LOGGING_CONFIG['format'],
         handlers=[
-            logging.FileHandler(log_file, encoding='utf-8'),
+            logging.FileHandler(log_file, encoding=LOGGING_CONFIG['encoding']),
             logging.StreamHandler()
         ]
     )
     return logging.getLogger(__name__)
 
-def read_stock_codes(file_path='code.txt'):
+def read_stock_codes(file_path=FILE_PATHS['stock_codes']):
     """종목코드 파일 읽기"""
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -45,7 +46,11 @@ def main():
     logger.info(f"총 {len(stock_codes)}개의 종목코드를 읽었습니다.")
     
     # 크롤러 초기화
-    crawler = FnGuideCrawler(headless=True, debug_mode=False)
+    crawler = FnGuideCrawler(
+        headless=CRAWLER_CONFIG['headless'],
+        debug_mode=CRAWLER_CONFIG['debug_mode'],
+        skip_step=CRAWLER_CONFIG['skip_step']
+    )
     
     try:
         # 로그인
@@ -73,9 +78,9 @@ def main():
         if datas:
             import csv
             file_name = f'collected_data_{datetime.now().strftime("%Y%m%d_%H%M%S")}.csv'
-            with open(file_name, mode='w', newline='', encoding='utf-8') as file:
+            with open(file_name, mode='w', newline='', encoding=CSV_CONFIG['encoding']) as file:
                 writer = csv.writer(file)
-                writer.writerow(['stock_code', 'stock_name', 'sales', 'operating_profit'])
+                writer.writerow(CSV_CONFIG['columns'])
                 for data in datas:
                     writer.writerow(data.values())
             logger.info(f"수집된 데이터를 {file_name} 파일로 내보냈습니다.")

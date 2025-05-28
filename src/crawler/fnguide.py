@@ -14,23 +14,30 @@ from config.config import (
     USERNAME, 
     PASSWORD,
     SELECTORS,
-    REQUEST_DELAY
+    REQUEST_DELAY,
+    QUARTER_CONFIG
 )
 import time
 # from auth import login
 
 class FnGuideCrawler(BaseCrawler):
-    def __init__(self, headless=True, debug_mode=False, skip_step=0):
+    def __init__(self, headless=True, debug_mode=False, skip_step=0, year=None, quarter=None):
         """
         FnGuide 크롤러 초기화
         
         Args:
             headless (bool): 브라우저 화면 표시 여부 (True: 화면 없음, False: 화면 표시)
             debug_mode (bool): 디버그 모드 여부 (True: 각 단계에서 사용자 입력 대기)
+            skip_step (int): 디버그 모드에서 스킵할 단계
+            year (int): 조회할 연도 (None인 경우 사용자 입력)
+            quarter (int): 조회할 분기 (None인 경우 사용자 입력)
         """
         super().__init__(headless)
         self.debug_mode = debug_mode
         self.skip_step = skip_step
+        self.year = year
+        self.quarter = quarter
+        self.quarter_value = self._get_quarter_value()
         
     def _wait_debug_step(self, step_name, step=1):
         """디버그 모드에서 사용자 입력 대기
@@ -51,9 +58,6 @@ class FnGuideCrawler(BaseCrawler):
         
         def login_process():
             try:
-                # 로그인 페이지로 이동
-                self.get_page(LOGIN_URL)
-                
                 # ID 입력
                 id_field = self.wait_for_element(
                     By.CSS_SELECTOR,
@@ -98,9 +102,58 @@ class FnGuideCrawler(BaseCrawler):
                 return False
                 
         self._wait_debug_step("로그인 시도")
+        
         result = login_process()
         return result
     
+    def _search_stock(self, stock_code):
+        """종목 검색 수행"""
+        try:
+            search_input = self.wait_for_element(By.ID, "txtSearchWd")
+            if not search_input:
+                self.logger.error("검색 창을 찾을 수 없습니다.")
+                return None
+                
+            search_input.clear()
+            search_input.send_keys(stock_code)
+            time.sleep(1)
+            search_input.send_keys(Keys.RETURN)
+            time.sleep(REQUEST_DELAY)
+            
+            return search_input
+        except Exception as e:
+            self.logger.error(f"종목 검색 실패: {str(e)}")
+            return None
+            
+    def _wait_for_content_load(self):
+        """콘텐츠 로딩 대기"""
+        try:
+            time.sleep(1)
+            content_loaded = self.wait_for_element(By.ID, "txtSearchWd")
+            if not content_loaded:
+                self.logger.error("콘텐츠 로딩 실패")
+                return False
+            return True
+        except Exception as e:
+            self.logger.error(f"콘텐츠 로딩 대기 실패: {str(e)}")
+            return False
+            
+    def _extract_stock_data(self, soup, stock_code, stock_name):
+        """주식 데이터 추출"""
+        try:
+            time.sleep(1)
+            sales, profit = self._extract_sales_and_operating_profit(soup)
+            
+            return {
+                'stock_code': stock_code,
+                'stock_name': stock_name,
+                'sales': sales,
+                'operating_profit': profit
+            }
+        except Exception as e:
+            self.logger.error(f"데이터 추출 실패: {str(e)}")
+            return None
+
     def get_item_detail(self, stock_code):
         """
         특정 종목의 상세 정보 조회
@@ -119,55 +172,52 @@ class FnGuideCrawler(BaseCrawler):
         url = f"{ITEM_DETAIL_URL}"
         if not self.get_page(url):
             return None
-            
-        data = {
-                'stock_code': stock_code,
-                'stock_name': None,
-                'sales': None,
-                'operating_profit': None
-            }
-        try:
-            self._wait_debug_step("검색창 입력", 2)
-            # 검색 창 찾기
-            search_input = self.wait_for_element(By.ID, "txtSearchWd")
-            if not search_input:
-                self.logger.error("검색 창을 찾을 수 없습니다.")
+        current_url = self.driver.current_url
+        if current_url == "https://www.fnguide.com/home/login":
+            self.logger.info("로그인 페이지로 이동. 로그인 프로세스 재시작.")
+            if not self.login():
+                self.logger.error("로그인 실패. 프로세스 종료.")
                 return None
-            # 검색창에 종목코드 입력
-            search_input.clear()
-            search_input.send_keys(stock_code)
-            time.sleep(1)  # 1초의 간격을 넣습니다.
-            self._wait_debug_step("검색창 입력 엔터", 2)
-            search_input.send_keys(Keys.RETURN)
+        try:
+            # 1. 종목 검색
+            self._wait_debug_step("검색창 입력", 2)
+            search_input = self._search_stock(stock_code)
+            if not search_input:
+                return None
             
-            time.sleep(REQUEST_DELAY)  # 검색 결과 로딩 대기
+            time.sleep(1)
             
-            self._wait_debug_step("콘텐츠 로딩", 2)
-            # 콘텐츠 로딩 대기
-            time.sleep(1)  # 1초의 간격을 넣습니다.
-            content_loaded = self.wait_for_element(By.ID, "txtSearchWd")
-            if not content_loaded:
-                self.logger.error(f"종목 {stock_code}의 콘텐츠 로딩 실패")
+            self._wait_debug_step("분기 확인 및 입력", 2)
+            branch = self._check_branch()
+            if not branch:
+                return None
+            
+            self._wait_debug_step("분기 조회", 2)
+            
+            quarter_submit = self.wait_for_element(
+                By.CSS_SELECTOR,
+                SELECTORS['login']['quarter_submit']
+            )
+            if not quarter_submit:
                 return None
                 
+            # 2. 콘텐츠 로딩 대기
+            self._wait_debug_step("콘텐츠 로딩", 2)
+            if not self._wait_for_content_load():
+                return None
+                
+            # 3. 데이터 추출
             self._wait_debug_step("데이터 추출", 2)
-            # BeautifulSoup으로 데이터 추출
-            time.sleep(1)  # 1초의 간격을 넣습니다.
             soup = BeautifulSoup(self.driver.page_source, 'lxml')
-            
-            # 기본 정보 추출
-            time.sleep(1)  # 1초의 간격을 넣습니다.
-            sales, profit = self._extract_sales_and_operating_profit(soup)
             stock_name = search_input.get_attribute('value')
-            print("stock_name: ", stock_name)
+            
+            # 4. 데이터 저장
             self._wait_debug_step("데이터 저장", 2)
-            data = {
-                'stock_code': stock_code,
-                'stock_name': stock_name,
-                'sales': sales,
-                'operating_profit': profit
-            }            
-            return data
+            data = self._extract_stock_data(soup, stock_code, stock_name)
+            if data:
+                print("stock_name: ", stock_name)
+                return data
+            return None
 
         except Exception as e:
             self.logger.error(f"종목 {stock_code} 데이터 추출 실패: {str(e)}")
@@ -208,7 +258,7 @@ class FnGuideCrawler(BaseCrawler):
         """
         try:
             # 타임스탬프를 포함한 파일명 생성
-            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            timestamp = datetime.now().strftime('%Y%m%d')
             filename = f"{stock_code}_{timestamp}.csv"
             filepath = os.path.join(DATA_DIR, filename)
             
@@ -221,3 +271,105 @@ class FnGuideCrawler(BaseCrawler):
             
         except Exception as e:
             self.logger.error(f"CSV 저장 실패: {str(e)}") 
+
+    def _get_user_input(self):
+        """사용자로부터 연도와 분기 입력 받기"""
+        # 이미 설정된 값이 있으면 사용
+        if self.year is not None and self.quarter is not None:
+            return self.year, self.quarter
+            
+        while True:
+            try:
+                user_input = input(QUARTER_CONFIG['input_prompt'])
+                year, quarter = user_input.strip().split()
+                
+                # 입력값 검증
+                year = int(year)
+                quarter = int(quarter)
+                
+                if not (2000 <= year <= 2100):
+                    print("연도는 2000년부터 2100년 사이여야 합니다.")
+                    continue
+                    
+                if not (1 <= quarter <= 4):
+                    print("분기는 1부터 4 사이여야 합니다.")
+                    continue
+                    
+                # 입력받은 값을 저장
+                self.year = year
+                self.quarter = quarter
+                return year, quarter
+                
+            except ValueError:
+                print(f"올바른 형식으로 입력해주세요. 예: {QUARTER_CONFIG['input_format']}")
+            except Exception as e:
+                print(f"입력 중 오류가 발생했습니다: {str(e)}")
+                
+    def _get_quarter_value(self):
+        """설정된 연도와 분기로 value 값 생성"""
+        # 사용자 입력 받기
+        year, quarter = self._get_user_input()
+        
+        # value 형식: YYYYMMQ (예: 2025062)
+        # YYYY: 연도, MM: 월(03, 06, 09, 12), Q: 분기(1,2,3,4)
+        month_map = {1: '03', 2: '06', 3: '09', 4: '12'}
+        month = month_map.get(quarter, '01')
+        
+        return f"{year}{month}{quarter}"
+        
+    def _check_branch(self):
+        """분기 선택 확인 및 처리"""
+        try:
+            # 분기 선택 드롭다운 찾기
+            branch_selector = self.wait_for_element(
+                By.CSS_SELECTOR,
+                SELECTORS['branch']['selector']
+            )
+            if not branch_selector:
+                self.logger.error("분기 선택 드롭다운을 찾을 수 없습니다.")
+                return False
+                
+            # 분기 선택 드롭다운 클릭
+            branch_selector.click()
+            time.sleep(1)  # 옵션 로딩 대기
+            
+            # 설정된 분기 value 값 가져오기
+            self.quarter_value = self._get_quarter_value()
+            self.logger.info(f"선택할 분기: {self.quarter_value}")
+            
+            # 해당 value를 가진 옵션 선택
+            option_selector = SELECTORS['branch']['option_template'].format(self.quarter_value)
+            target_option = self.wait_for_element(
+                By.CSS_SELECTOR,
+                option_selector
+            )
+            if not target_option:
+                self.logger.error(f"분기 옵션을 찾을 수 없습니다. (value: {self.quarter_value})")
+                return False
+                
+            # 옵션 선택
+            target_option.click()
+            time.sleep(1)  # 선택 적용 대기
+            
+            # 드롭다운 닫기 (다른 요소 클릭)
+            self.driver.find_element(By.TAG_NAME, "body").click()
+            time.sleep(1)  # 드롭다운 닫힘 대기
+            
+            # 조회 버튼 클릭
+            quarter_submit = self.wait_for_element(
+                By.CSS_SELECTOR,
+                SELECTORS['login']['quarter_submit']
+            )
+            if not quarter_submit:
+                self.logger.error("조회 버튼을 찾을 수 없습니다.")
+                return False
+                
+            quarter_submit.click()
+            time.sleep(1)  # 조회 결과 로딩 대기
+            
+            self.logger.info(f"분기 선택 완료: {self.quarter_value}")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"분기 선택 중 오류 발생: {str(e)}")
+            return False 

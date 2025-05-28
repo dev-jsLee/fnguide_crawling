@@ -56,3 +56,82 @@
 2025-05-28 09:09:11,608 - src.crawler.base - ERROR - 로그인 버튼을 찾을 수 없습니다.
 2025-05-28 09:12:40,640 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
 2025-05-28 09:13:00,949 - src.crawler.base - INFO - [디버그 모드] 종목 000660 상세정보 조회 시작
+2025-05-28 09:14:03,165 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-28 09:14:21,619 - src.crawler.base - INFO - [디버그 모드] 종목 000660 상세정보 조회 시작
+2025-05-28 09:38:42,358 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-28 09:38:59,682 - src.crawler.base - INFO - [디버그 모드] 종목 000660 상세정보 조회 시작
+2025-05-28 09:39:19,538 - src.crawler.base - INFO - 선택할 분기: 2025124
+2025-05-28 09:39:20,649 - src.crawler.base - INFO - 분기 선택 완료: 2025124
+2025-05-28 09:40:42,189 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-28 09:40:57,801 - src.crawler.base - INFO - [디버그 모드] 종목 000660 상세정보 조회 시작
+2025-05-28 09:41:37,910 - src.crawler.base - INFO - 선택할 분기: 2025124
+2025-05-28 09:41:39,030 - src.crawler.base - INFO - 분기 선택 완료: 2025124
+2025-05-28 09:44:47,636 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-28 09:45:02,348 - src.crawler.base - INFO - [디버그 모드] 종목 000660 상세정보 조회 시작
+2025-05-28 09:45:22,968 - src.crawler.base - INFO - 선택할 분기: 2025124
+2025-05-28 09:45:24,029 - src.crawler.base - INFO - 분기 선택 완료: 2025124
+2025-05-28 09:46:37,599 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-28 09:46:52,006 - src.crawler.base - INFO - [디버그 모드] 종목 000660 상세정보 조회 시작
+2025-05-28 09:47:13,565 - src.crawler.base - INFO - 선택할 분기: 2025124
+2025-05-28 09:47:14,625 - src.crawler.base - INFO - 분기 선택 완료: 2025124
+2025-05-28 09:49:42,691 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-28 09:49:57,257 - src.crawler.base - INFO - [디버그 모드] 종목 000660 상세정보 조회 시작
+2025-05-28 09:50:12,203 - src.crawler.base - INFO - 선택할 분기: 2025124
+2025-05-28 09:50:13,341 - src.crawler.base - INFO - 분기 선택 완료: 2025124
+2025-05-28 09:51:02,285 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-28 09:51:49,117 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-28 09:52:05,187 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-28 09:52:18,472 - src.crawler.base - INFO - [디버그 모드] 종목 000660 상세정보 조회 시작
+2025-05-28 09:52:32,543 - src.crawler.base - INFO - 선택할 분기: 2025124
+2025-05-28 09:52:34,738 - src.crawler.base - INFO - 분기 선택 완료: 2025124
+2025-05-28 09:53:02,923 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-28 09:53:16,374 - src.crawler.base - INFO - [디버그 모드] 종목 000660 상세정보 조회 시작
+2025-05-28 09:53:49,235 - src.crawler.base - INFO - 선택할 분기: 2025124
+2025-05-28 09:53:51,323 - src.crawler.base - INFO - 분기 선택 완료: 2025124
+2025-05-28 09:56:51,831 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-28 09:57:06,468 - src.crawler.base - INFO - [디버그 모드] 종목 000660 상세정보 조회 시작
+2025-05-28 09:57:20,408 - src.crawler.base - INFO - 선택할 분기: 2025124
+2025-05-28 09:57:23,708 - src.crawler.base - INFO - 분기 선택 완료: 2025124
+2025-05-28 09:57:40,315 - src.crawler.base - INFO - [디버그 모드] 종목 005930 상세정보 조회 시작
+2025-05-28 09:58:01,083 - src.crawler.base - INFO - 선택할 분기: 2025093
+2025-05-28 09:58:04,349 - src.crawler.base - INFO - 분기 선택 완료: 2025093
+2025-05-28 09:58:26,133 - src.crawler.base - INFO - [디버그 모드] 종목 035420 상세정보 조회 시작
+2025-05-28 09:58:41,651 - src.crawler.base - INFO - 선택할 분기: 2025093
+2025-05-28 09:58:44,879 - src.crawler.base - INFO - 분기 선택 완료: 2025093
+2025-05-28 10:02:41,767 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-28 10:02:52,298 - src.crawler.base - INFO - [디버그 모드] 종목 000660 상세정보 조회 시작
+2025-05-28 10:03:12,374 - src.crawler.base - INFO - 선택할 분기: 2025124
+2025-05-28 10:03:15,703 - src.crawler.base - INFO - 분기 선택 완료: 2025124
+2025-05-28 10:03:22,940 - src.crawler.base - INFO - [디버그 모드] 종목 005930 상세정보 조회 시작
+2025-05-28 10:07:39,345 - src.crawler.base - WARNING - 요소 대기 시간 초과 css selector=#divLogin > div.lay--popFooter > form > button.btn--back
+2025-05-28 10:07:39,346 - src.crawler.base - ERROR - 로그인 버튼을 찾을 수 없습니다.
+2025-05-28 10:10:37,103 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-28 10:11:47,854 - src.crawler.base - INFO - [디버그 모드] 종목 000660 상세정보 조회 시작
+2025-05-28 10:14:58,437 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-28 10:15:01,885 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-28 10:15:12,635 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-28 10:15:15,944 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-28 10:15:26,603 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-28 10:15:30,031 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-28 10:19:19,650 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-28 10:19:22,909 - src.crawler.base - ERROR - 분기 선택 중 오류 발생: name 'quarter_value' is not defined
+2025-05-28 10:19:31,125 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-28 10:19:34,334 - src.crawler.base - ERROR - 분기 선택 중 오류 발생: name 'quarter_value' is not defined
+2025-05-28 10:20:53,947 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-28 10:20:57,200 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-28 10:21:07,553 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-28 10:21:10,808 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-28 10:21:21,179 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-28 10:21:24,395 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-28 10:29:19,253 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-28 10:29:22,518 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-28 10:29:32,918 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-28 10:29:36,215 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-28 10:29:46,644 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-28 10:29:49,894 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-28 10:30:45,231 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-28 10:30:48,465 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-28 10:30:58,868 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-28 10:31:02,071 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-28 10:31:12,487 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-28 10:31:15,742 - src.crawler.base - INFO - 분기 선택 완료: 2025062

@@ -109,11 +109,14 @@ class FnGuideCrawler(BaseCrawler):
     def _search_stock(self, stock_code):
         """종목 검색 수행"""
         try:
+            url = f"{ITEM_DETAIL_URL}"
+            if not self.get_page(url):
+                return None
             search_input = self.wait_for_element(By.ID, "txtSearchWd")
             if not search_input:
                 self.logger.error("검색 창을 찾을 수 없습니다.")
                 return None
-                
+            
             search_input.clear()
             search_input.send_keys(stock_code)
             time.sleep(1)
@@ -128,7 +131,6 @@ class FnGuideCrawler(BaseCrawler):
     def _wait_for_content_load(self):
         """콘텐츠 로딩 대기"""
         try:
-            time.sleep(1)
             content_loaded = self.wait_for_element(By.ID, "txtSearchWd")
             if not content_loaded:
                 self.logger.error("콘텐츠 로딩 실패")
@@ -141,9 +143,8 @@ class FnGuideCrawler(BaseCrawler):
     def _extract_stock_data(self, soup, stock_code, stock_name):
         """주식 데이터 추출"""
         try:
-            time.sleep(1)
             sales, profit = self._extract_sales_and_operating_profit(soup)
-            
+
             return {
                 'stock_code': stock_code,
                 'stock_name': stock_name,
@@ -172,7 +173,9 @@ class FnGuideCrawler(BaseCrawler):
         url = f"{ITEM_DETAIL_URL}"
         if not self.get_page(url):
             return None
+        # 현재 페이지 추출 
         current_url = self.driver.current_url
+        # 만약 현재 페이지가 로그인 페이지로 돌아가는 경우
         if current_url == "https://www.fnguide.com/home/login":
             self.logger.info("로그인 페이지로 이동. 로그인 프로세스 재시작.")
             if not self.login():
@@ -184,8 +187,6 @@ class FnGuideCrawler(BaseCrawler):
             search_input = self._search_stock(stock_code)
             if not search_input:
                 return None
-            
-            time.sleep(1)
             
             self._wait_debug_step("분기 확인 및 입력", 2)
             branch = self._check_branch()
@@ -331,7 +332,6 @@ class FnGuideCrawler(BaseCrawler):
                 
             # 분기 선택 드롭다운 클릭
             branch_selector.click()
-            time.sleep(1)  # 옵션 로딩 대기
             
             # 설정된 분기 value 값 가져오기
             self.quarter_value = self._get_quarter_value()
@@ -349,11 +349,10 @@ class FnGuideCrawler(BaseCrawler):
                 
             # 옵션 선택
             target_option.click()
-            time.sleep(1)  # 선택 적용 대기
             
             # 드롭다운 닫기 (다른 요소 클릭)
             self.driver.find_element(By.TAG_NAME, "body").click()
-            time.sleep(1)  # 드롭다운 닫힘 대기
+            time.sleep(0.5)  # 드롭다운 닫힘 대기
             
             # 조회 버튼 클릭
             quarter_submit = self.wait_for_element(
@@ -365,7 +364,6 @@ class FnGuideCrawler(BaseCrawler):
                 return False
                 
             quarter_submit.click()
-            time.sleep(1)  # 조회 결과 로딩 대기
             
             self.logger.info(f"분기 선택 완료: {self.quarter_value}")
             return True

@@ -51,7 +51,9 @@ def save_data_to_csv(data, file_name, is_first=False):
             writer = csv.writer(file)
             if header:
                 writer.writerow(CSV_CONFIG['columns'])
-            writer.writerow(data.values())
+            
+            value = data.values()
+            writer.writerow("None" if value is None else value)
         return True
     except Exception as e:
         print(f"데이터 저장 실패: {str(e)}")
@@ -117,9 +119,12 @@ def main():
         is_first = True
         
         # 각 종목별로 데이터 수집
-        for code in stock_codes:
+        for idx, code in enumerate(stock_codes, 1):
+            logger.info(f"[{idx}/{len(stock_codes)}] 종목 {code} 데이터 수집 시작")
+            data = None # 데이터 초기화
             logger.info(f"종목 {code} 데이터 수집 시작")
             try:
+                # 데이터 추출, 만약 없으면 None 반환
                 data = crawler.get_item_detail(code)
                 if data:
                     logger.info(f"종목 {code} 데이터 수집 완료")

@@ -135,3 +135,231 @@
 2025-05-28 10:31:02,071 - src.crawler.base - INFO - 분기 선택 완료: 2025062
 2025-05-28 10:31:12,487 - src.crawler.base - INFO - 선택할 분기: 2025062
 2025-05-28 10:31:15,742 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:02:49,481 - src.crawler.base - WARNING - 요소 대기 시간 초과 css selector=#divLogin > div.lay--popFooter > form > button.btn--back
+2025-05-31 17:02:49,484 - src.crawler.base - ERROR - 로그인 버튼을 찾을 수 없습니다.
+2025-05-31 17:03:37,652 - src.crawler.base - WARNING - 요소 대기 시간 초과 css selector=#divLogin > div.lay--popFooter > form > button.btn--back
+2025-05-31 17:03:37,655 - src.crawler.base - ERROR - 로그인 버튼을 찾을 수 없습니다.
+2025-05-31 17:04:36,044 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-31 17:05:16,666 - src.crawler.base - INFO - [디버그 모드] 종목 000660 상세정보 조회 시작
+2025-05-31 17:06:18,692 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-31 17:06:43,739 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-31 17:07:57,312 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-31 17:08:04,086 - src.crawler.base - INFO - [디버그 모드] 종목 214450 상세정보 조회 시작
+2025-05-31 17:08:30,976 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:08:34,140 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:08:52,837 - src.crawler.base - INFO - [디버그 모드] 종목 336570 상세정보 조회 시작
+2025-05-31 17:21:02,374 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-31 17:21:07,331 - src.crawler.base - INFO - [디버그 모드] 종목 214450 상세정보 조회 시작
+2025-05-31 17:21:19,431 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:21:22,574 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:21:27,568 - src.crawler.base - INFO - [디버그 모드] 종목 336570 상세정보 조회 시작
+2025-05-31 17:21:39,206 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:21:42,338 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:21:47,132 - src.crawler.base - INFO - [디버그 모드] 종목 287410 상세정보 조회 시작
+2025-05-31 17:23:09,663 - src.crawler.base - INFO - [디버그 모드] 로그인 프로세스 시작
+2025-05-31 17:23:12,492 - src.crawler.base - INFO - [디버그 모드] 종목 214450 상세정보 조회 시작
+2025-05-31 17:23:22,697 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:23:25,879 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:23:27,964 - src.crawler.base - INFO - [디버그 모드] 종목 336570 상세정보 조회 시작
+2025-05-31 17:24:15,650 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:24:18,780 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:24:28,759 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:24:31,870 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:24:41,855 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:24:44,975 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:24:55,013 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:24:58,127 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:25:08,198 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:25:11,356 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:25:22,109 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:25:25,235 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:25:35,391 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:25:38,504 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:25:48,657 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:25:51,800 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:26:02,435 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:26:05,564 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:26:15,913 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:26:19,074 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:26:29,880 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:26:33,010 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:30:53,504 - src.crawler.base - WARNING - 요소 대기 시간 초과 id=txtSearchWd
+2025-05-31 17:30:53,506 - src.crawler.base - ERROR - 검색 창을 찾을 수 없습니다.
+2025-05-31 17:31:01,666 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:31:05,012 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:31:16,507 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:31:19,721 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:31:30,261 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:31:33,602 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:31:44,126 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:31:47,367 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:31:59,110 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:32:02,314 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:32:12,615 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:32:15,836 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:32:26,487 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:32:29,672 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:32:39,732 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:32:42,863 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:32:53,087 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:32:56,212 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:33:06,251 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:33:09,369 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:33:19,462 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:33:22,573 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:33:32,572 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:33:35,682 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:33:45,574 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:33:48,671 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:33:59,323 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:34:02,423 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:34:13,082 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:34:16,181 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:34:26,104 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:34:29,200 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:34:39,084 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:34:42,198 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:34:52,167 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:34:55,288 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:35:05,251 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:35:08,382 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:35:18,375 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:35:21,476 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:35:31,379 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:35:34,476 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:35:44,382 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:35:47,490 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:35:57,425 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:36:00,530 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:36:10,470 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:36:13,571 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:36:23,552 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:36:26,654 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:36:36,582 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:36:39,696 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:36:49,731 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:36:52,868 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:37:03,706 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:37:06,825 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:37:16,860 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:37:20,013 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:37:30,054 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:37:33,201 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:37:43,252 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:37:46,368 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:37:56,347 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:37:59,498 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:38:09,569 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:38:12,693 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:38:22,665 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:38:25,786 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:38:35,852 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:38:38,977 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:38:49,000 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:38:52,113 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:39:02,059 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:39:05,200 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:39:15,248 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:39:18,357 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:39:28,595 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:39:31,709 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:39:41,712 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:39:44,837 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:39:54,790 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:39:57,920 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:40:08,190 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:40:11,309 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:40:21,282 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:40:24,419 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:40:34,408 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:40:37,535 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:40:47,684 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:40:50,808 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:41:00,925 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:41:04,043 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:41:13,993 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:41:17,155 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:41:27,218 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:41:30,348 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:41:40,383 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:41:43,513 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:41:53,592 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:41:56,744 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:42:06,886 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:42:10,032 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:42:20,012 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:42:23,119 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:42:33,089 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:42:36,212 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:42:47,057 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:42:50,188 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:43:01,743 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:43:04,840 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:43:15,502 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:43:18,649 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:43:28,696 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:43:31,867 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:43:41,803 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:43:44,954 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:43:55,030 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:43:58,174 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:44:08,179 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:44:11,297 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:44:21,253 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:44:24,385 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:53:46,009 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:53:46,654 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:53:57,135 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:53:57,748 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:54:07,093 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:54:07,691 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:54:16,953 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:54:17,562 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:54:26,614 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:54:27,223 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:54:36,478 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:54:37,084 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:54:45,893 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:54:46,523 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:54:55,270 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:54:55,883 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:55:05,787 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:55:06,401 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:55:16,513 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:55:17,128 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:55:25,975 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:55:26,601 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:55:35,390 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:55:36,012 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:55:44,899 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:55:45,514 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:55:55,912 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:55:56,529 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:56:05,170 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:56:05,788 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:56:14,970 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:56:15,616 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:56:25,420 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:56:26,028 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:56:36,468 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:56:37,066 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:56:46,181 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:56:46,782 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:56:55,503 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:56:56,126 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:57:04,922 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:57:05,551 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:57:14,457 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:57:15,054 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:57:23,908 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:57:24,550 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:57:33,488 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:57:34,192 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:57:43,189 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:57:43,799 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:57:52,706 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:57:53,321 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:58:02,315 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:58:02,942 - src.crawler.base - INFO - 분기 선택 완료: 2025062
+2025-05-31 17:58:14,105 - src.crawler.base - INFO - 선택할 분기: 2025062
+2025-05-31 17:58:14,731 - src.crawler.base - INFO - 분기 선택 완료: 2025062

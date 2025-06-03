@@ -21,6 +21,13 @@ QUARTER_CONFIG = {
     'input_prompt': '연도와 분기를 입력하세요 (예: 2025 2): '  # 입력 프롬프트
 }
 
+# 연간 데이터 설정
+ANNUAL_CONFIG = {
+    'year': None,  # 조회할 연도 (사용자 입력)
+    'input_format': 'YYYY',  # 입력 형식 (예: 2025)
+    'input_prompt': '연도를 입력하세요 (예: 2025): '  # 입력 프롬프트
+}
+
 # CSS Selectors
 SELECTORS = {
     # 로그인 폼 관련 선택자
@@ -36,6 +43,12 @@ SELECTORS = {
     'branch': {
         'selector': "#selGsYm",
         'option_template': "#selGsYm > option[value='{}']"  # value 값으로 옵션 선택
+    },
+    # 연간/분기 선택 관련 선택자
+    'annual': {
+        'selector': "#selAqGb",
+        'annual_option': "#selAqGb > option[value='A']",
+        'quarter_option': "#selAqGb > option[value='Q']"
     }
 }
 
@@ -57,8 +70,8 @@ os.makedirs(LOG_DIR, exist_ok=True)
 
 # 크롤러 기본 설정
 CRAWLER_CONFIG = {
-    'headless': True,  # 브라우저 화면 안 보임
-    # 'headless': False,  # 브라우저 화면 보임
+    # 'headless': True,  # 브라우저 화면 안 보임
+    'headless': False,  # 브라우저 화면 보임
     'debug_mode': False,  # 디버그 안 보임
     # 'debug_mode': True,  # 디버그 모드
     'skip_step': 0,  # 디버그 모드에서 스킵할 단계

@@ -40,12 +40,334 @@ class FnGuideCrawler(BaseCrawler):
         self.quarter_value = self._get_quarter_value()
         
     def _wait_debug_step(self, step_name, step=1):
-        """디버그 모드에서 사용자 입력 대기
-        step 값이 0이면 모든 단계에서 대기
-        """
+        """디버그 모드에서 사용자 입력 대기"""
         if self.debug_mode and self.skip_step <= step:
             input(f"\n[디버그 모드] '{step_name}' 단계 준비 완료. 계속하려면 Enter를 누르세요...")
+            
+    def _get_user_input(self):
+        """사용자로부터 연도와 분기 입력 받기"""
+        # 이미 설정된 값이 있으면 사용
+        if self.year is not None:
+            return self.year, self.quarter
+            
+        while True:
+            try:
+                # 연간 데이터인 경우 연도만 입력 받기
+                if self.quarter is None:
+                    year = int(input("연도를 입력하세요 (예: 2024): "))
+                    if not (2000 <= year <= 2100):
+                        print("연도는 2000년부터 2100년 사이여야 합니다.")
+                        continue
+                    self.year = year
+                    return year, None
+                else:
+                    # 분기 데이터인 경우 기존 로직 유지
+                    user_input = input(QUARTER_CONFIG['input_prompt'])
+                    year, quarter = user_input.strip().split()
+                    
+                    # 입력값 검증
+                    year = int(year)
+                    quarter = int(quarter)
+                    
+                    if not (2000 <= year <= 2100):
+                        print("연도는 2000년부터 2100년 사이여야 합니다.")
+                        continue
+                        
+                    if not (1 <= quarter <= 4):
+                        print("분기는 1부터 4 사이여야 합니다.")
+                        continue
+                        
+                    # 입력받은 값을 저장
+                    self.year = year
+                    self.quarter = quarter
+                    return year, quarter
+                    
+            except ValueError:
+                print("올바른 형식으로 입력해주세요.")
+            except Exception as e:
+                print(f"입력 중 오류가 발생했습니다: {str(e)}")
+                
+    def _get_quarter_value(self):
+        """설정된 연도와 분기로 value 값 생성"""
+        # 사용자 입력 받기
+        year, quarter = self._get_user_input()
         
+        # 연간 데이터인 경우
+        if quarter is None:
+            return f"{year}12"  # 연간 데이터는 12월로 설정
+            
+        # 분기 데이터인 경우
+        month_map = {1: '03', 2: '06', 3: '09', 4: '12'}
+        month = month_map.get(quarter, '01')
+        
+        return f"{year}{month}{quarter}"
+        
+    def _search_stock(self, stock_code):
+        """종목 검색 수행"""
+        try:
+            url = f"{ITEM_DETAIL_URL}"
+            if not self.get_page(url):
+                return None
+            search_input = self.wait_for_element(By.ID, "txtSearchWd")
+            if not search_input:
+                self.logger.error("검색 창을 찾을 수 없습니다.")
+                return None
+            
+            search_input.clear()
+            search_input.send_keys(stock_code)
+            time.sleep(1)
+            search_input.send_keys(Keys.RETURN)
+            time.sleep(REQUEST_DELAY)
+            
+            return search_input
+        except Exception as e:
+            self.logger.error(f"종목 검색 실패: {str(e)}")
+            return None
+            
+    def _wait_for_content_load(self):
+        """콘텐츠 로딩 대기"""
+        try:
+            content_loaded = self.wait_for_element(By.ID, "txtSearchWd")
+            if not content_loaded:
+                self.logger.error("콘텐츠 로딩 실패")
+                return False
+            return True
+        except Exception as e:
+            self.logger.error(f"콘텐츠 로딩 대기 실패: {str(e)}")
+            return False
+            
+    def _extract_stock_data(self, soup, stock_code, stock_name):
+        """주식 데이터 추출"""
+        try:
+            sales, profit = self._extract_sales_and_operating_profit(soup)
+
+            return {
+                'stock_code': stock_code,
+                'stock_name': stock_name,
+                'sales': sales,
+                'operating_profit': profit
+            }
+        except Exception as e:
+            self.logger.error(f"데이터 추출 실패: {str(e)}")
+            return None
+            
+    def _extract_sales_and_operating_profit(self, soup):
+        """매출액과 영업이익 추출"""
+        try:
+            sales = soup.select_one('#contents > table > tbody > tr:nth-child(4) > td:nth-child(2)')
+            operating_profit = soup.select_one('#contents > table > tbody > tr:nth-child(4) > td:nth-child(3)')
+            
+            def convert_to_number(value_str):
+                if not value_str:
+                    return None
+                # 쉼표 제거 후 숫자로 변환
+                try:
+                    return float(value_str.replace(',', ''))
+                except ValueError:
+                    return None
+            
+            sales_value = convert_to_number(sales.text.strip() if sales else None)
+            operating_profit_value = convert_to_number(operating_profit.text.strip() if operating_profit else None)
+            
+            return (sales_value, operating_profit_value)
+        except Exception as e:
+            self.logger.warning(f"매출액/영업이익 추출 실패: {str(e)}")
+            return (None, None)
+            
+    def select_annual_data(self):
+        """연간 데이터 선택 및 조회"""
+        try:
+            # 1. 연간/분기 선택 드롭다운 찾기
+            annual_selector = self.wait_for_element(
+                By.ID,
+                "selAqGb"
+            )
+            if not annual_selector:
+                self.logger.error("연간/분기 선택 드롭다운을 찾을 수 없습니다.")
+                return False
+                
+            # 2. 연간/분기 선택 드롭다운 클릭
+            annual_selector.click()
+            
+            # 3. 연간 옵션 선택
+            annual_option = self.wait_for_element(
+                By.CSS_SELECTOR,
+                "#selAqGb > option[value='A']"
+            )
+            if not annual_option:
+                self.logger.error("연간 옵션을 찾을 수 없습니다.")
+                return False
+                
+            # 4. 옵션 선택
+            annual_option.click()
+            
+            # 5. 드롭다운 닫기 (다른 요소 클릭)
+            self.driver.find_element(By.TAG_NAME, "body").click()
+            time.sleep(0.5)  # 드롭다운 닫힘 대기
+            
+            # 6. 조회 버튼 클릭
+            submit_button = self.wait_for_element(
+                By.CSS_SELECTOR,
+                "#btnSubmit"
+            )
+            if not submit_button:
+                self.logger.error("조회 버튼을 찾을 수 없습니다.")
+                return False
+                
+            submit_button.click()
+            
+            # 7. 데이터 테이블 또는 '데이터 없음' 메시지 대기
+            try:
+                # 먼저 '데이터 없음' 메시지 확인
+                no_data = self.wait_for_element(
+                    By.CSS_SELECTOR,
+                    "td.nodata",
+                    timeout=3  # 짧은 타임아웃으로 빠르게 확인
+                )
+                if no_data and "데이터가 없습니다" in no_data.text:
+                    self.logger.info("해당 기간의 데이터가 없습니다.")
+                    return False
+            except:
+                # '데이터 없음' 메시지가 없으면 정상적인 데이터 테이블 확인
+                data_element = self.wait_for_element(
+                    By.CSS_SELECTOR,
+                    "#contents > table > tbody > tr:nth-child(4) > td:nth-child(2)"
+                )
+                if not data_element:
+                    self.logger.error("데이터 테이블 로딩 실패")
+                    return False
+            
+            self.logger.info("연간 데이터 선택 및 조회 완료")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"연간 데이터 선택 중 오류 발생: {str(e)}")
+            return False
+            
+    def select_quarter_data(self):
+        """분기 데이터 선택 및 조회"""
+        try:
+            # 1. 연간/분기 선택 드롭다운 찾기
+            quarter_selector = self.wait_for_element(
+                By.ID,
+                "selAqGb"
+            )
+            if not quarter_selector:
+                self.logger.error("연간/분기 선택 드롭다운을 찾을 수 없습니다.")
+                return False
+                
+            # 2. 연간/분기 선택 드롭다운 클릭
+            quarter_selector.click()
+            
+            # 3. 분기 옵션 선택
+            quarter_option = self.wait_for_element(
+                By.CSS_SELECTOR,
+                "#selAqGb > option[value='Q']"
+            )
+            if not quarter_option:
+                self.logger.error("분기 옵션을 찾을 수 없습니다.")
+                return False
+                
+            # 4. 옵션 선택
+            quarter_option.click()
+            
+            # 5. 드롭다운 닫기 (다른 요소 클릭)
+            self.driver.find_element(By.TAG_NAME, "body").click()
+            time.sleep(0.5)  # 드롭다운 닫힘 대기
+            
+            # 6. 분기 선택
+            if not self._check_branch():
+                return False
+                
+            # 7. 데이터 테이블 또는 '데이터 없음' 메시지 대기
+            try:
+                # 먼저 '데이터 없음' 메시지 확인
+                no_data = self.wait_for_element(
+                    By.CSS_SELECTOR,
+                    "td.nodata",
+                    timeout=3  # 짧은 타임아웃으로 빠르게 확인
+                )
+                if no_data and "데이터가 없습니다" in no_data.text:
+                    self.logger.info("해당 기간의 데이터가 없습니다.")
+                    return False
+            except:
+                # '데이터 없음' 메시지가 없으면 정상적인 데이터 테이블 확인
+                data_element = self.wait_for_element(
+                    By.CSS_SELECTOR,
+                    "#contents > table > tbody > tr:nth-child(4) > td:nth-child(2)"
+                )
+                if not data_element:
+                    self.logger.error("데이터 테이블 로딩 실패")
+                    return False
+                
+            self.logger.info("분기 데이터 선택 및 조회 완료")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"분기 데이터 선택 중 오류 발생: {str(e)}")
+            return False
+            
+    def get_item_detail(self, stock_code):
+        """
+        특정 종목의 상세 정보 조회
+        
+        Args:
+            stock_code (str): 조회할 종목 코드
+            
+        Returns:
+            dict: 추출된 데이터 또는 실패 시 None
+        """
+        if self.debug_mode:
+            self.logger.info(f"[디버그 모드] 종목 {stock_code} 상세정보 조회 시작")
+        
+        self._wait_debug_step("페이지 로딩", 2)
+        
+        # 현재 페이지 추출 
+        current_url = self.driver.current_url
+        # 만약 현재 페이지가 로그인 페이지로 돌아가는 경우
+        if current_url == "https://www.fnguide.com/home/login":
+            self.logger.info("로그인 페이지로 이동. 로그인 프로세스 재시작.")
+            if not self.login():
+                self.logger.error("로그인 실패. 프로세스 종료.")
+                return None
+                
+        try:
+            # 1. 종목 검색
+            self._wait_debug_step("검색창 입력", 2)
+            search_input = self._search_stock(stock_code)
+            if not search_input:
+                return None
+            
+            # 2. 데이터 선택 (연간/분기)
+            if self.quarter is None:
+                if not self.select_annual_data():
+                    return None
+            else:
+                if not self.select_quarter_data():
+                    return None
+            
+            # 3. 콘텐츠 로딩 대기
+            self._wait_debug_step("콘텐츠 로딩", 2)
+            if not self._wait_for_content_load():
+                return None
+                
+            # 4. 데이터 추출
+            self._wait_debug_step("데이터 추출", 2)
+            soup = BeautifulSoup(self.driver.page_source, 'lxml')
+            stock_name = search_input.get_attribute('value')
+            
+            # 5. 데이터 저장
+            self._wait_debug_step("데이터 저장", 2)
+            data = self._extract_stock_data(soup, stock_code, stock_name)
+            if data:
+                print("stock_name: ", stock_name)
+                return data
+            return None
+
+        except Exception as e:
+            self.logger.error(f"종목 {stock_code} 데이터 추출 실패: {str(e)}")
+            return None
+            
     def login(self):
         """
         FnGuide 웹사이트 로그인
@@ -105,150 +427,62 @@ class FnGuideCrawler(BaseCrawler):
         
         result = login_process()
         return result
-    
-    def _search_stock(self, stock_code):
-        """종목 검색 수행"""
+            
+    def _check_branch(self):
+        """분기 선택 확인 및 처리"""
         try:
-            url = f"{ITEM_DETAIL_URL}"
-            if not self.get_page(url):
-                return None
-            search_input = self.wait_for_element(By.ID, "txtSearchWd")
-            if not search_input:
-                self.logger.error("검색 창을 찾을 수 없습니다.")
-                return None
-            
-            search_input.clear()
-            search_input.send_keys(stock_code)
-            time.sleep(1)
-            search_input.send_keys(Keys.RETURN)
-            time.sleep(REQUEST_DELAY)
-            
-            return search_input
-        except Exception as e:
-            self.logger.error(f"종목 검색 실패: {str(e)}")
-            return None
-            
-    def _wait_for_content_load(self):
-        """콘텐츠 로딩 대기"""
-        try:
-            content_loaded = self.wait_for_element(By.ID, "txtSearchWd")
-            if not content_loaded:
-                self.logger.error("콘텐츠 로딩 실패")
+            # 분기 선택 드롭다운 찾기
+            branch_selector = self.wait_for_element(
+                By.CSS_SELECTOR,
+                SELECTORS['branch']['selector']
+            )
+            if not branch_selector:
+                self.logger.error("분기 선택 드롭다운을 찾을 수 없습니다.")
                 return False
-            return True
-        except Exception as e:
-            self.logger.error(f"콘텐츠 로딩 대기 실패: {str(e)}")
-            return False
+                
+            # 분기 선택 드롭다운 클릭
+            branch_selector.click()
             
-    def _extract_stock_data(self, soup, stock_code, stock_name):
-        """주식 데이터 추출"""
-        try:
-            sales, profit = self._extract_sales_and_operating_profit(soup)
-
-            return {
-                'stock_code': stock_code,
-                'stock_name': stock_name,
-                'sales': sales,
-                'operating_profit': profit
-            }
-        except Exception as e:
-            self.logger.error(f"데이터 추출 실패: {str(e)}")
-            return None
-
-    def get_item_detail(self, stock_code):
-        """
-        특정 종목의 상세 정보 조회
-        
-        Args:
-            stock_code (str): 조회할 종목 코드
+            # 설정된 분기 value 값 가져오기
+            self.quarter_value = self._get_quarter_value()
+            self.logger.info(f"선택할 기간: {self.quarter_value}")
             
-        Returns:
-            dict: 추출된 데이터 또는 실패 시 None
-        """
-        if self.debug_mode:
-            self.logger.info(f"[디버그 모드] 종목 {stock_code} 상세정보 조회 시작")
-        
-        self._wait_debug_step("페이지 로딩", 2)
-        # 종목 상세 페이지로 이동
-        url = f"{ITEM_DETAIL_URL}"
-        if not self.get_page(url):
-            return None
-        # 현재 페이지 추출 
-        current_url = self.driver.current_url
-        # 만약 현재 페이지가 로그인 페이지로 돌아가는 경우
-        if current_url == "https://www.fnguide.com/home/login":
-            self.logger.info("로그인 페이지로 이동. 로그인 프로세스 재시작.")
-            if not self.login():
-                self.logger.error("로그인 실패. 프로세스 종료.")
-                return None
-        try:
-            # 1. 종목 검색
-            self._wait_debug_step("검색창 입력", 2)
-            search_input = self._search_stock(stock_code)
-            if not search_input:
-                return None
+            # 해당 value를 가진 옵션 선택
+            option_selector = SELECTORS['branch']['option_template'].format(self.quarter_value)
+            target_option = self.wait_for_element(
+                By.CSS_SELECTOR,
+                option_selector
+            )
+            if not target_option:
+                self.logger.error(f"기간 옵션을 찾을 수 없습니다. (value: {self.quarter_value})")
+                return False
+                
+            # 옵션 선택
+            target_option.click()
             
-            self._wait_debug_step("분기 확인 및 입력", 2)
-            branch = self._check_branch()
-            if not branch:
-                return None
+            # 드롭다운 닫기 (다른 요소 클릭)
+            self.driver.find_element(By.TAG_NAME, "body").click()
+            time.sleep(0.5)  # 드롭다운 닫힘 대기
             
-            self._wait_debug_step("분기 조회", 2)
-            
+            # 조회 버튼 클릭
             quarter_submit = self.wait_for_element(
                 By.CSS_SELECTOR,
                 SELECTORS['login']['quarter_submit']
             )
             if not quarter_submit:
-                return None
+                self.logger.error("조회 버튼을 찾을 수 없습니다.")
+                return False
                 
-            # 2. 콘텐츠 로딩 대기
-            self._wait_debug_step("콘텐츠 로딩", 2)
-            if not self._wait_for_content_load():
-                return None
-                
-            # 3. 데이터 추출
-            self._wait_debug_step("데이터 추출", 2)
-            soup = BeautifulSoup(self.driver.page_source, 'lxml')
-            stock_name = search_input.get_attribute('value')
+            quarter_submit.click()
+            time.sleep(REQUEST_DELAY)  # 페이지 로딩 대기
             
-            # 4. 데이터 저장
-            self._wait_debug_step("데이터 저장", 2)
-            data = self._extract_stock_data(soup, stock_code, stock_name)
-            if data:
-                print("stock_name: ", stock_name)
-                return data
-            return None
-
+            self.logger.info(f"기간 선택 완료: {self.quarter_value}")
+            return True
+            
         except Exception as e:
-            self.logger.error(f"종목 {stock_code} 데이터 추출 실패: {str(e)}")
-            return None
-            
-    
+            self.logger.error(f"기간 선택 중 오류 발생: {str(e)}")
+            return False
 
-    def _extract_sales_and_operating_profit(self, soup):
-        """매출액과 영업이익 추출"""
-        try:
-            sales = soup.select_one('#contents > table > tbody > tr:nth-child(4) > td:nth-child(2)')
-            operating_profit = soup.select_one('#contents > table > tbody > tr:nth-child(4) > td:nth-child(3)')
-            
-            def convert_to_number(value_str):
-                if not value_str:
-                    return None
-                # 쉼표 제거 후 숫자로 변환
-                try:
-                    return float(value_str.replace(',', ''))
-                except ValueError:
-                    return None
-            
-            sales_value = convert_to_number(sales.text.strip() if sales else None)
-            operating_profit_value = convert_to_number(operating_profit.text.strip() if operating_profit else None)
-            
-            return (sales_value, operating_profit_value)
-        except Exception as e:
-            self.logger.warning(f"매출액/영업이익 추출 실패: {str(e)}")
-            return (None, None)
-            
     def _save_to_csv(self, data, stock_code):
         """
         추출된 데이터를 CSV 파일로 저장
@@ -272,102 +506,3 @@ class FnGuideCrawler(BaseCrawler):
             
         except Exception as e:
             self.logger.error(f"CSV 저장 실패: {str(e)}") 
-
-    def _get_user_input(self):
-        """사용자로부터 연도와 분기 입력 받기"""
-        # 이미 설정된 값이 있으면 사용
-        if self.year is not None and self.quarter is not None:
-            return self.year, self.quarter
-            
-        while True:
-            try:
-                user_input = input(QUARTER_CONFIG['input_prompt'])
-                year, quarter = user_input.strip().split()
-                
-                # 입력값 검증
-                year = int(year)
-                quarter = int(quarter)
-                
-                if not (2000 <= year <= 2100):
-                    print("연도는 2000년부터 2100년 사이여야 합니다.")
-                    continue
-                    
-                if not (1 <= quarter <= 4):
-                    print("분기는 1부터 4 사이여야 합니다.")
-                    continue
-                    
-                # 입력받은 값을 저장
-                self.year = year
-                self.quarter = quarter
-                return year, quarter
-                
-            except ValueError:
-                print(f"올바른 형식으로 입력해주세요. 예: {QUARTER_CONFIG['input_format']}")
-            except Exception as e:
-                print(f"입력 중 오류가 발생했습니다: {str(e)}")
-                
-    def _get_quarter_value(self):
-        """설정된 연도와 분기로 value 값 생성"""
-        # 사용자 입력 받기
-        year, quarter = self._get_user_input()
-        
-        # value 형식: YYYYMMQ (예: 2025062)
-        # YYYY: 연도, MM: 월(03, 06, 09, 12), Q: 분기(1,2,3,4)
-        month_map = {1: '03', 2: '06', 3: '09', 4: '12'}
-        month = month_map.get(quarter, '01')
-        
-        return f"{year}{month}{quarter}"
-        
-    def _check_branch(self):
-        """분기 선택 확인 및 처리"""
-        try:
-            # 분기 선택 드롭다운 찾기
-            branch_selector = self.wait_for_element(
-                By.CSS_SELECTOR,
-                SELECTORS['branch']['selector']
-            )
-            if not branch_selector:
-                self.logger.error("분기 선택 드롭다운을 찾을 수 없습니다.")
-                return False
-                
-            # 분기 선택 드롭다운 클릭
-            branch_selector.click()
-            
-            # 설정된 분기 value 값 가져오기
-            self.quarter_value = self._get_quarter_value()
-            self.logger.info(f"선택할 분기: {self.quarter_value}")
-            
-            # 해당 value를 가진 옵션 선택
-            option_selector = SELECTORS['branch']['option_template'].format(self.quarter_value)
-            target_option = self.wait_for_element(
-                By.CSS_SELECTOR,
-                option_selector
-            )
-            if not target_option:
-                self.logger.error(f"분기 옵션을 찾을 수 없습니다. (value: {self.quarter_value})")
-                return False
-                
-            # 옵션 선택
-            target_option.click()
-            
-            # 드롭다운 닫기 (다른 요소 클릭)
-            self.driver.find_element(By.TAG_NAME, "body").click()
-            time.sleep(0.5)  # 드롭다운 닫힘 대기
-            
-            # 조회 버튼 클릭
-            quarter_submit = self.wait_for_element(
-                By.CSS_SELECTOR,
-                SELECTORS['login']['quarter_submit']
-            )
-            if not quarter_submit:
-                self.logger.error("조회 버튼을 찾을 수 없습니다.")
-                return False
-                
-            quarter_submit.click()
-            
-            self.logger.info(f"분기 선택 완료: {self.quarter_value}")
-            return True
-            
-        except Exception as e:
-            self.logger.error(f"분기 선택 중 오류 발생: {str(e)}")
-            return False 

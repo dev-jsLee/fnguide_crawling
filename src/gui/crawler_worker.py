@@ -11,7 +11,7 @@ class CrawlerWorker(QThread):
     log = pyqtSignal(str)      # 로그 시그널
     finished = pyqtSignal()    # 완료 시그널
     error = pyqtSignal(str)    # 에러 시그널
-    data_saved = pyqtSignal(str, dict)  # 데이터 저장 완료 시그널 (파일명, 데이터)
+    data_saved = pyqtSignal(dict)  # 데이터 저장 완료 시그널
     
     def __init__(self, stock_codes, year, quarter, user_id=None, password=None):
         super().__init__()
@@ -25,6 +25,10 @@ class CrawlerWorker(QThread):
     def save_data_to_csv(self, data):
         """데이터를 CSV 파일에 저장"""
         try:
+            if not isinstance(data, dict):
+                self.log.emit(f"CSV 저장 오류: 데이터가 dict 타입이 아님 - {type(data)}")
+                return False
+                
             mode = 'w' if self.is_first else 'a'
             header = self.is_first
             
@@ -33,12 +37,19 @@ class CrawlerWorker(QThread):
                 if header:
                     writer.writerow(CSV_CONFIG['columns'])
                 
-                writer.writerow(data.values())
+                # 안전한 데이터 추출
+                row_data = []
+                for column in CSV_CONFIG['columns']:
+                    value = data.get(column, None)
+                    row_data.append(value if value is not None else "")
+                
+                writer.writerow(row_data)
             
             self.is_first = False
             return True
         except Exception as e:
             self.log.emit(f"데이터 저장 실패: {str(e)}")
+            self.log.emit(f"문제 데이터: {data}")
             return False
         
     def run(self):
@@ -71,13 +82,17 @@ class CrawlerWorker(QThread):
                 try:
                     data = crawler.get_item_detail(code)
                     if data:
-                        # 데이터를 즉시 파일에 저장
-                        if self.save_data_to_csv(data):
-                            self.log.emit(f"종목 {code} 데이터 저장 완료")
-                            # 데이터 저장 완료 시그널 발생
-                            self.data_saved.emit(self.file_name, data)
+                        # 데이터 유효성 검사
+                        if isinstance(data, dict):
+                            # 데이터를 즉시 파일에 저장
+                            if self.save_data_to_csv(data):
+                                self.log.emit(f"종목 {code} 데이터 저장 완료")
+                                # 데이터 저장 완료 시그널 발생
+                                self.data_saved.emit(data)
+                            else:
+                                self.log.emit(f"종목 {code} 데이터 저장 실패")
                         else:
-                            self.log.emit(f"종목 {code} 데이터 저장 실패")
+                            self.log.emit(f"종목 {code} 데이터 형식 오류: {type(data)} - {data}")
                     else:
                         self.log.emit(f"종목 {code} 데이터 수집 실패")
                 except Exception as e:

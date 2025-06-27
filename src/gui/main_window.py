@@ -153,6 +153,18 @@ class MainWindow(QMainWindow):
     def update_data_table(self, data):
         """데이터 테이블 업데이트"""
         try:
+            # 데이터 유효성 검사
+            if not isinstance(data, dict):
+                self.log_text.append(f"데이터 형식 오류: dict 타입이 아님 - {type(data)}: {data}")
+                return
+                
+            # 필수 키 확인
+            required_keys = ['stock_code', 'stock_name', 'sales', 'operating_profit']
+            for key in required_keys:
+                if key not in data:
+                    self.log_text.append(f"데이터 키 누락: {key}")
+                    data[key] = None  # 누락된 키에 기본값 설정
+            
             # 컬럼 설정 (첫 번째 데이터 기준)
             if self.data_table.columnCount() == 0:
                 columns = ['종목코드', '종목명', '매출액', '영업이익']
@@ -163,11 +175,11 @@ class MainWindow(QMainWindow):
             row = self.data_table.rowCount()
             self.data_table.insertRow(row)
             
-            # 데이터 입력
-            self.data_table.setItem(row, 0, QTableWidgetItem(str(data['stock_code'])))
-            self.data_table.setItem(row, 1, QTableWidgetItem(str(data['stock_name'])))
-            self.data_table.setItem(row, 2, QTableWidgetItem(str(data['sales'] if data['sales'] is not None else '-')))
-            self.data_table.setItem(row, 3, QTableWidgetItem(str(data['operating_profit'] if data['operating_profit'] is not None else '-')))
+            # 데이터 입력 (안전한 문자열 변환)
+            self.data_table.setItem(row, 0, QTableWidgetItem(str(data.get('stock_code', '-'))))
+            self.data_table.setItem(row, 1, QTableWidgetItem(str(data.get('stock_name', '-'))))
+            self.data_table.setItem(row, 2, QTableWidgetItem(str(data.get('sales', '-') if data.get('sales') is not None else '-')))
+            self.data_table.setItem(row, 3, QTableWidgetItem(str(data.get('operating_profit', '-') if data.get('operating_profit') is not None else '-')))
             
             # 테이블 스크롤을 최신 데이터로 이동
             self.data_table.scrollToBottom()
@@ -177,6 +189,8 @@ class MainWindow(QMainWindow):
             
         except Exception as e:
             self.log_text.append(f"데이터 테이블 업데이트 실패: {str(e)}")
+            self.log_text.append(f"문제 데이터: {data}")
+            self.log_text.append(f"데이터 타입: {type(data)}")
     
     def crawling_finished(self):
         self.start_btn.setEnabled(True)

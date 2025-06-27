@@ -1,5 +1,5 @@
 """
-연간 데이터 크롤링 메인 스크립트 (리팩토링 버전)
+분기별 데이터 크롤링 메인 스크립트 (리팩토링 버전)
 새로운 모듈 구조를 사용하여 중복 코드 제거 및 구조 개선
 """
 from src.core.crawler_service import CrawlerService, CrawlingMode
@@ -14,7 +14,7 @@ from config.config import (
 
 
 def main():
-    """연간 데이터 크롤링 메인 함수"""
+    """분기별 데이터 크롤링 메인 함수"""
     # 크롤러 서비스 초기화
     service = CrawlerService(
         headless=CRAWLER_CONFIG['headless'],
@@ -24,8 +24,8 @@ def main():
     )
     
     # 로거 설정
-    logger = service.setup_logger("crawler_annual")
-    logger.info("연간 데이터 크롤링 시작")
+    logger = service.setup_logger("crawler_quarterly")
+    logger.info("분기별 데이터 크롤링 시작")
     
     try:
         # 종목코드 읽기
@@ -34,13 +34,13 @@ def main():
             logger.error("종목코드가 없습니다.")
             return
         
-        # 사용자 입력 받기 (연도)
-        year = service.get_user_input_annual()
-        if year is None:
+        # 사용자 입력 받기 (연도, 분기)
+        year, quarter = service.get_user_input_quarterly()
+        if year is None or quarter is None:
             return
         
-        # 크롤러 초기화 (연간 데이터이므로 quarter=None)
-        if not service.initialize_crawler(year, quarter=None):
+        # 크롤러 초기화
+        if not service.initialize_crawler(year, quarter):
             logger.error("크롤러 초기화 실패")
             return
         
@@ -52,7 +52,7 @@ def main():
         # 데이터 크롤링
         file_name, success_count, failure_count = service.crawl_stock_data(
             stock_codes=stock_codes,
-            mode=CrawlingMode.ANNUAL,
+            mode=CrawlingMode.QUARTERLY,
             csv_columns=CSV_CONFIG['columns'],
             item_detail_url=ITEM_DETAIL_URL
         )

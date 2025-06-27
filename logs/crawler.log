@@ -468,3 +468,203 @@
 2025-06-03 10:24:02,952 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
 2025-06-03 10:24:21,107 - src.crawler.base - WARNING - 요소 대기 시간 초과 css selector=td.nodata
 2025-06-03 10:24:21,108 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-15 10:21:50,714 - src.crawler.base - INFO - 로그인 페이지로 이동. 로그인 프로세스 재시작.
+2025-06-15 10:22:09,047 - src.crawler.base - ERROR - 로그인 프로세스 중 오류 발생: ('Connection aborted.', ConnectionResetError(10054, '현재 연결은 원격 호스트에 의해 강제로 끊겼습니다', None, 10054, None))
+2025-06-15 10:22:09,048 - src.crawler.base - ERROR - 로그인 실패. 프로세스 종료.
+2025-06-15 10:22:25,582 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-15 10:22:25,582 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-15 10:22:28,232 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-15 10:22:28,232 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-15 10:22:28,250 - src.crawler.base - INFO - 해당 기간의 데이터가 없습니다.
+2025-06-15 10:22:28,250 - src.crawler.base - INFO - 해당 기간의 데이터가 없습니다.
+2025-06-15 10:22:35,418 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-15 10:22:35,418 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-15 10:22:38,057 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-15 10:22:38,057 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-15 10:22:38,071 - src.crawler.base - INFO - 해당 기간의 데이터가 없습니다.
+2025-06-15 10:22:38,071 - src.crawler.base - INFO - 해당 기간의 데이터가 없습니다.
+2025-06-15 10:22:44,488 - src.crawler.base - ERROR - 분기 데이터 선택 중 오류 발생: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=137.0.7151.104)
+Stacktrace:
+	GetHandleVerifier [0x0xa73783+63299]
+	GetHandleVerifier [0x0xa737c4+63364]
+	(No symbol) [0x0x8a1113]
+	(No symbol) [0x0x8908a0]
+	(No symbol) [0x0x8ae8c2]
+	(No symbol) [0x0x91519c]
+	(No symbol) [0x0x92f359]
+	(No symbol) [0x0x90e376]
+	(No symbol) [0x0x8dd6e0]
+	(No symbol) [0x0x8de544]
+	GetHandleVerifier [0x0xcce073+2531379]
+	GetHandleVerifier [0x0xcc9372+2511666]
+	GetHandleVerifier [0x0xa99efa+220858]
+	GetHandleVerifier [0x0xa8a548+156936]
+	GetHandleVerifier [0x0xa90c7d+183357]
+	GetHandleVerifier [0x0xa7b6e8+95912]
+	GetHandleVerifier [0x0xa7b890+96336]
+	GetHandleVerifier [0x0xa6666a+9770]
+	BaseThreadInitThunk [0x0x769bfcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x77ac82ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x77ac827e+238]
+
+2025-06-15 10:22:44,488 - src.crawler.base - ERROR - 분기 데이터 선택 중 오류 발생: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=137.0.7151.104)
+Stacktrace:
+	GetHandleVerifier [0x0xa73783+63299]
+	GetHandleVerifier [0x0xa737c4+63364]
+	(No symbol) [0x0x8a1113]
+	(No symbol) [0x0x8908a0]
+	(No symbol) [0x0x8ae8c2]
+	(No symbol) [0x0x91519c]
+	(No symbol) [0x0x92f359]
+	(No symbol) [0x0x90e376]
+	(No symbol) [0x0x8dd6e0]
+	(No symbol) [0x0x8de544]
+	GetHandleVerifier [0x0xcce073+2531379]
+	GetHandleVerifier [0x0xcc9372+2511666]
+	GetHandleVerifier [0x0xa99efa+220858]
+	GetHandleVerifier [0x0xa8a548+156936]
+	GetHandleVerifier [0x0xa90c7d+183357]
+	GetHandleVerifier [0x0xa7b6e8+95912]
+	GetHandleVerifier [0x0xa7b890+96336]
+	GetHandleVerifier [0x0xa6666a+9770]
+	BaseThreadInitThunk [0x0x769bfcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x77ac82ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x77ac827e+238]
+
+2025-06-15 10:31:17,445 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-15 10:31:20,118 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-15 10:31:20,148 - src.crawler.base - INFO - 해당 기간의 데이터가 없습니다.
+2025-06-15 10:31:27,485 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-15 10:31:30,144 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-15 10:31:30,157 - src.crawler.base - INFO - 해당 기간의 데이터가 없습니다.
+2025-06-15 10:31:37,258 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-15 10:31:39,902 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-15 10:31:39,913 - src.crawler.base - INFO - 해당 기간의 데이터가 없습니다.
+2025-06-15 10:31:43,810 - src.crawler.base - ERROR - 종목 검색 실패: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=137.0.7151.104)
+Stacktrace:
+	GetHandleVerifier [0x0xc93783+63299]
+	GetHandleVerifier [0x0xc937c4+63364]
+	(No symbol) [0x0xac1113]
+	(No symbol) [0x0xab08a0]
+	(No symbol) [0x0xace8c2]
+	(No symbol) [0x0xb3519c]
+	(No symbol) [0x0xb4f359]
+	(No symbol) [0x0xb2e376]
+	(No symbol) [0x0xafd6e0]
+	(No symbol) [0x0xafe544]
+	GetHandleVerifier [0x0xeee073+2531379]
+	GetHandleVerifier [0x0xee9372+2511666]
+	GetHandleVerifier [0x0xcb9efa+220858]
+	GetHandleVerifier [0x0xcaa548+156936]
+	GetHandleVerifier [0x0xcb0c7d+183357]
+	GetHandleVerifier [0x0xc9b6e8+95912]
+	GetHandleVerifier [0x0xc9b890+96336]
+	GetHandleVerifier [0x0xc8666a+9770]
+	BaseThreadInitThunk [0x0x769bfcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x77ac82ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x77ac827e+238]
+
+2025-06-15 10:32:58,575 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-15 10:33:01,275 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-15 10:33:01,294 - src.crawler.base - INFO - 해당 기간의 데이터가 없습니다.
+2025-06-15 10:33:07,829 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-15 10:33:10,452 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-15 10:33:10,463 - src.crawler.base - INFO - 해당 기간의 데이터가 없습니다.
+2025-06-15 10:33:16,961 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-15 10:33:19,600 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-15 10:33:19,610 - src.crawler.base - INFO - 해당 기간의 데이터가 없습니다.
+2025-06-15 10:33:26,090 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-15 10:33:28,718 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-15 10:33:28,732 - src.crawler.base - INFO - 해당 기간의 데이터가 없습니다.
+2025-06-15 10:35:06,722 - src.crawler.base - INFO - 로그인 페이지로 이동. 로그인 프로세스 재시작.
+2025-06-15 10:35:22,073 - src.crawler.base - ERROR - 로그인 프로세스 중 오류 발생: ('Connection aborted.', ConnectionResetError(10054, '현재 연결은 원격 호스트에 의해 강제로 끊겼습니다', None, 10054, None))
+2025-06-15 10:35:22,075 - src.crawler.base - ERROR - 로그인 실패. 프로세스 종료.
+2025-06-15 10:35:30,510 - src.crawler.base - INFO - 로그인 페이지로 이동. 로그인 프로세스 재시작.
+2025-06-15 10:35:30,510 - src.crawler.base - INFO - 로그인 페이지로 이동. 로그인 프로세스 재시작.
+2025-06-15 10:35:51,720 - src.crawler.base - ERROR - 로그인 프로세스 중 오류 발생: ('Connection aborted.', ConnectionResetError(10054, '현재 연결은 원격 호스트에 의해 강제로 끊겼습니다', None, 10054, None))
+2025-06-15 10:35:51,720 - src.crawler.base - ERROR - 로그인 프로세스 중 오류 발생: ('Connection aborted.', ConnectionResetError(10054, '현재 연결은 원격 호스트에 의해 강제로 끊겼습니다', None, 10054, None))
+2025-06-15 10:35:51,721 - src.crawler.base - ERROR - 로그인 실패. 프로세스 종료.
+2025-06-15 10:35:51,721 - src.crawler.base - ERROR - 로그인 실패. 프로세스 종료.
+2025-06-15 10:36:03,781 - src.crawler.base - INFO - 로그인 페이지로 이동. 로그인 프로세스 재시작.
+2025-06-15 10:36:03,781 - src.crawler.base - INFO - 로그인 페이지로 이동. 로그인 프로세스 재시작.
+2025-06-15 10:36:03,781 - src.crawler.base - INFO - 로그인 페이지로 이동. 로그인 프로세스 재시작.
+2025-06-15 10:36:34,519 - src.crawler.base - INFO - 로그인 페이지로 이동. 로그인 프로세스 재시작.
+2025-06-15 10:36:58,642 - src.crawler.base - ERROR - 로그인 프로세스 중 오류 발생: ('Connection aborted.', ConnectionResetError(10054, '현재 연결은 원격 호스트에 의해 강제로 끊겼습니다', None, 10054, None))
+2025-06-15 10:36:58,644 - src.crawler.base - ERROR - 로그인 실패. 프로세스 종료.
+2025-06-15 10:37:33,571 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-15 10:37:36,201 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-15 10:37:36,201 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-15 10:37:42,907 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-15 10:37:45,521 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-15 10:37:45,521 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-15 10:37:52,000 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-15 10:37:54,636 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-15 10:37:54,637 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-15 10:38:30,424 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-15 10:38:37,043 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-15 10:38:46,538 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-15 10:38:53,180 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-15 10:39:02,618 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-15 10:39:09,296 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-15 10:49:34,837 - src.crawler.base - INFO - 로그인 페이지로 이동. 로그인 프로세스 재시작.
+2025-06-15 10:50:09,188 - src.crawler.base - WARNING - 요소 대기 시간 초과 css selector=#txtID
+2025-06-15 10:50:09,188 - src.crawler.base - ERROR - ID 입력 필드를 찾을 수 없습니다.
+2025-06-15 10:50:09,189 - src.crawler.base - ERROR - 로그인 실패. 프로세스 종료.
+2025-06-15 10:50:15,957 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-15 10:50:18,963 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-15 10:50:18,963 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-15 10:50:25,545 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-15 10:50:28,195 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-15 10:50:28,195 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-15 10:55:11,658 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-15 10:55:14,318 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-15 10:55:14,318 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-15 10:55:24,567 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-15 10:55:27,203 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-15 10:55:27,204 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-15 10:55:37,563 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-15 10:55:40,178 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-15 10:55:40,179 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-15 10:57:59,749 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-15 10:58:06,294 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-15 10:58:15,534 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-15 10:58:22,162 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-15 10:58:28,209 - src.crawler.base - ERROR - 종목 검색 실패: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=137.0.7151.104)
+Stacktrace:
+	GetHandleVerifier [0x0xf03783+63299]
+	GetHandleVerifier [0x0xf037c4+63364]
+	(No symbol) [0x0xd31113]
+	(No symbol) [0x0xd208a0]
+	(No symbol) [0x0xd3e8c2]
+	(No symbol) [0x0xda519c]
+	(No symbol) [0x0xdbf359]
+	(No symbol) [0x0xd9e376]
+	(No symbol) [0x0xd6d6e0]
+	(No symbol) [0x0xd6e544]
+	GetHandleVerifier [0x0x115e073+2531379]
+	GetHandleVerifier [0x0x1159372+2511666]
+	GetHandleVerifier [0x0xf29efa+220858]
+	GetHandleVerifier [0x0xf1a548+156936]
+	GetHandleVerifier [0x0xf20c7d+183357]
+	GetHandleVerifier [0x0xf0b6e8+95912]
+	GetHandleVerifier [0x0xf0b890+96336]
+	GetHandleVerifier [0x0xef666a+9770]
+	BaseThreadInitThunk [0x0x769bfcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x77ac82ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x77ac827e+238]
+
+2025-06-15 11:01:56,009 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-15 11:02:07,160 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-15 11:02:16,684 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-15 11:05:47,848 - src.crawler.base - WARNING - 요소 대기 시간 초과 id=txtSearchWd
+2025-06-15 11:05:47,849 - src.crawler.base - ERROR - 검색 창을 찾을 수 없습니다.
+2025-06-15 11:05:57,351 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-15 11:06:08,863 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료

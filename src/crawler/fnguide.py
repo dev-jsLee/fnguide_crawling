@@ -103,11 +103,9 @@ class FnGuideCrawler(BaseCrawler):
         return f"{year}{month}{quarter}"
         
     def _search_stock(self, stock_code):
-        """종목 검색 수행"""
+        """종목 검색 수행 (페이지 이동 없이 검색만)"""
         try:
-            url = f"{ITEM_DETAIL_URL}"
-            if not self.get_page(url):
-                return None
+            # 페이지 이동 제거 - 이미 올바른 페이지에 있다고 가정
             search_input = self.wait_for_element(By.ID, "txtSearchWd")
             if not search_input:
                 self.logger.error("검색 창을 찾을 수 없습니다.")
@@ -217,25 +215,25 @@ class FnGuideCrawler(BaseCrawler):
             submit_button.click()
             
             # 7. 데이터 테이블 또는 '데이터 없음' 메시지 대기
-            try:
-                # 먼저 '데이터 없음' 메시지 확인
-                no_data = self.wait_for_element(
-                    By.CSS_SELECTOR,
-                    "td.nodata",
-                    timeout=3  # 짧은 타임아웃으로 빠르게 확인
-                )
-                if no_data and "데이터가 없습니다" in no_data.text:
-                    self.logger.info("해당 기간의 데이터가 없습니다.")
-                    return False
-            except:
-                # '데이터 없음' 메시지가 없으면 정상적인 데이터 테이블 확인
-                data_element = self.wait_for_element(
-                    By.CSS_SELECTOR,
-                    "#contents > table > tbody > tr:nth-child(4) > td:nth-child(2)"
-                )
-                if not data_element:
-                    self.logger.error("데이터 테이블 로딩 실패")
-                    return False
+            # try:
+            #     # 먼저 '데이터 없음' 메시지 확인
+            #     no_data = self.wait_for_element(
+            #         By.CSS_SELECTOR,
+            #         "td.nodata[colspan='8']",
+            #         timeout=3  # 짧은 타임아웃으로 빠르게 확인
+            #     )
+            #     if no_data and "데이터가 없습니다" in no_data.text:
+            #         self.logger.info("해당 기간의 데이터가 없습니다.")
+            #         return False
+            # except:
+            #     # '데이터 없음' 메시지가 없으면 정상적인 데이터 테이블 확인
+            #     data_element = self.wait_for_element(
+            #         By.CSS_SELECTOR,
+            #         "#contents > table > tbody > tr:nth-child(4) > td:nth-child(2)"
+            #     )
+            #     if not data_element:
+            #         self.logger.error("데이터 테이블 로딩 실패")
+            #         return False
             
             self.logger.info("연간 데이터 선택 및 조회 완료")
             return True
@@ -280,25 +278,25 @@ class FnGuideCrawler(BaseCrawler):
                 return False
                 
             # 7. 데이터 테이블 또는 '데이터 없음' 메시지 대기
-            try:
-                # 먼저 '데이터 없음' 메시지 확인
-                no_data = self.wait_for_element(
-                    By.CSS_SELECTOR,
-                    "td.nodata",
-                    timeout=3  # 짧은 타임아웃으로 빠르게 확인
-                )
-                if no_data and "데이터가 없습니다" in no_data.text:
-                    self.logger.info("해당 기간의 데이터가 없습니다.")
-                    return False
-            except:
-                # '데이터 없음' 메시지가 없으면 정상적인 데이터 테이블 확인
-                data_element = self.wait_for_element(
-                    By.CSS_SELECTOR,
-                    "#contents > table > tbody > tr:nth-child(4) > td:nth-child(2)"
-                )
-                if not data_element:
-                    self.logger.error("데이터 테이블 로딩 실패")
-                    return False
+            # try:
+            #     # 먼저 '데이터 없음' 메시지 확인
+            #     no_data = self.wait_for_element(
+            #         By.CSS_SELECTOR,
+            #         "td.nodata",
+            #         timeout=3  # 짧은 타임아웃으로 빠르게 확인
+            #     )
+            #     if no_data and "데이터가 없습니다" in no_data.text:
+            #         self.logger.info("해당 기간의 데이터가 없습니다.")
+            #         return False
+            # except:
+            #     # '데이터 없음' 메시지가 없으면 정상적인 데이터 테이블 확인
+            #     data_element = self.wait_for_element(
+            #         By.CSS_SELECTOR,
+            #         "#contents > table > tbody > tr:nth-child(4) > td:nth-child(2)"
+            #     )
+            #     if not data_element:
+            #         self.logger.error("데이터 테이블 로딩 실패")
+            #         return False
                 
             self.logger.info("분기 데이터 선택 및 조회 완료")
             return True
@@ -307,7 +305,7 @@ class FnGuideCrawler(BaseCrawler):
             self.logger.error(f"분기 데이터 선택 중 오류 발생: {str(e)}")
             return False
             
-    def get_item_detail(self, stock_code):
+    def get_item_detail(self, stock_code: str):
         """
         특정 종목의 상세 정보 조회
         
@@ -355,12 +353,12 @@ class FnGuideCrawler(BaseCrawler):
             self._wait_debug_step("데이터 추출", 2)
             soup = BeautifulSoup(self.driver.page_source, 'lxml')
             stock_name = search_input.get_attribute('value')
-            
             # 5. 데이터 저장
             self._wait_debug_step("데이터 저장", 2)
             data = self._extract_stock_data(soup, stock_code, stock_name)
+            print("stock_name: ", stock_name)
+            print(f"data: {data}")
             if data:
-                print("stock_name: ", stock_name)
                 return data
             return None
 

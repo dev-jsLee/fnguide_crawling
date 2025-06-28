@@ -113,7 +113,9 @@ class FnGuideCrawler(BaseCrawler):
             
             search_input.clear()
             search_input.send_keys(stock_code)
-            time.sleep(1)
+            time.sleep(1.5)  # 종목코드 입력 후 1.5초 대기 (자동완성 처리 시간 확보)
+            search_input.send_keys(Keys.ARROW_DOWN)  # 아래 방향키로 자동완성 첫 번째 항목 선택
+            time.sleep(0.2)  # 방향키 처리 대기
             search_input.send_keys(Keys.RETURN)
             time.sleep(REQUEST_DELAY)
             
@@ -320,14 +322,21 @@ class FnGuideCrawler(BaseCrawler):
         
         self._wait_debug_step("페이지 로딩", 2)
         
-        # 현재 페이지 추출 
+        # 현재 페이지 확인
         current_url = self.driver.current_url
-        # 만약 현재 페이지가 로그인 페이지로 돌아가는 경우
+        self.logger.info(f"현재 페이지: {current_url}")
+        
+        # 로그인 페이지로 돌아간 경우 재로그인
         if current_url == "https://www.fnguide.com/home/login":
             self.logger.info("로그인 페이지로 이동. 로그인 프로세스 재시작.")
             if not self.login():
                 self.logger.error("로그인 실패. 프로세스 종료.")
                 return None
+        # 올바른 검색 페이지가 아닌 경우 이동
+        elif ITEM_DETAIL_URL not in current_url:
+            self.logger.info(f"검색 페이지가 아닙니다. 올바른 페이지로 이동 중...")
+            self.get_page(ITEM_DETAIL_URL)
+            time.sleep(2)  # 페이지 로딩 대기
                 
         try:
             # 1. 종목 검색
@@ -415,6 +424,15 @@ class FnGuideCrawler(BaseCrawler):
                 
                 self._wait_debug_step("로그인 버튼 클릭")
                 submit_button.click()
+                
+                # 로그인 완료 대기
+                time.sleep(3)  # 로그인 처리 대기
+                
+                # 로그인 후 검색 페이지로 이동
+                self.logger.info("로그인 완료. 검색 페이지로 이동 중...")
+                self.get_page(ITEM_DETAIL_URL)
+                time.sleep(2)  # 페이지 로딩 대기
+                
                 return True
                 
             except Exception as e:

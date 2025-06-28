@@ -714,3 +714,372 @@ Stacktrace:
 2025-06-27 16:17:41,570 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
 2025-06-27 16:17:53,544 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
 2025-06-27 16:18:05,594 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-28 19:56:39,247 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 19:56:42,055 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 19:56:42,056 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 19:56:46,391 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 19:56:49,289 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 19:56:49,290 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 19:56:54,091 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 19:56:56,923 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 19:56:56,930 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 19:57:01,613 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 19:57:04,426 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 19:57:04,426 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 19:57:08,711 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 19:57:11,530 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 19:57:11,530 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 19:57:15,818 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 19:57:18,603 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 19:57:18,603 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:00:38,238 - src.crawler.base - WARNING - 요소 대기 시간 초과 id=txtSearchWd
+2025-06-28 20:00:38,240 - src.crawler.base - ERROR - 검색 창을 찾을 수 없습니다.
+2025-06-28 20:01:09,571 - src.crawler.base - WARNING - 요소 대기 시간 초과 id=txtSearchWd
+2025-06-28 20:01:09,636 - src.crawler.base - ERROR - 검색 창을 찾을 수 없습니다.
+2025-06-28 20:01:40,993 - src.crawler.base - WARNING - 요소 대기 시간 초과 id=txtSearchWd
+2025-06-28 20:01:40,993 - src.crawler.base - ERROR - 검색 창을 찾을 수 없습니다.
+2025-06-28 20:02:09,948 - src.crawler.base - INFO - 로그인 완료. 검색 페이지로 이동 중...
+2025-06-28 20:02:14,859 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail
+2025-06-28 20:02:19,667 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:02:22,545 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:02:22,545 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:02:22,718 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A131970
+2025-06-28 20:02:27,314 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:02:30,168 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:02:30,168 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:02:30,357 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A131970
+2025-06-28 20:02:34,889 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:02:37,674 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:02:37,674 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:02:37,879 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A131970
+2025-06-28 20:02:42,532 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:02:45,357 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:02:45,357 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:02:45,508 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A131970
+2025-06-28 20:02:51,138 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:02:53,939 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:02:53,939 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:04:22,432 - src.crawler.base - INFO - 로그인 완료. 검색 페이지로 이동 중...
+2025-06-28 20:04:27,094 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail
+2025-06-28 20:04:32,126 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-28 20:04:32,429 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A012450
+2025-06-28 20:04:37,230 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-28 20:04:37,450 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A261200
+2025-06-28 20:04:42,222 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-28 20:05:12,911 - src.crawler.base - INFO - 로그인 완료. 검색 페이지로 이동 중...
+2025-06-28 20:05:12,911 - src.crawler.base - INFO - 로그인 완료. 검색 페이지로 이동 중...
+2025-06-28 20:05:17,776 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail
+2025-06-28 20:05:17,776 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail
+2025-06-28 20:05:22,743 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:05:22,743 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:05:25,615 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:05:25,615 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:05:25,615 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:05:25,615 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:05:25,746 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A012450
+2025-06-28 20:05:25,746 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A012450
+2025-06-28 20:05:30,555 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:05:30,555 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:05:33,323 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:05:33,323 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:05:33,324 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:05:33,324 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:05:33,503 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A261200
+2025-06-28 20:05:33,503 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A261200
+2025-06-28 20:05:38,341 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:05:38,341 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:05:41,118 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:05:41,118 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:05:41,118 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:05:41,118 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:06:19,174 - src.crawler.base - INFO - 로그인 완료. 검색 페이지로 이동 중...
+2025-06-28 20:06:19,174 - src.crawler.base - INFO - 로그인 완료. 검색 페이지로 이동 중...
+2025-06-28 20:06:19,174 - src.crawler.base - INFO - 로그인 완료. 검색 페이지로 이동 중...
+2025-06-28 20:06:24,025 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail
+2025-06-28 20:06:24,025 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail
+2025-06-28 20:06:24,025 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail
+2025-06-28 20:06:28,794 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:06:28,794 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:06:28,794 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:06:31,552 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:06:31,552 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:06:31,552 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:06:31,553 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:06:31,553 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:06:31,553 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:06:31,669 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A131970
+2025-06-28 20:06:31,669 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A131970
+2025-06-28 20:06:31,669 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A131970
+2025-06-28 20:06:36,393 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:06:36,393 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:06:36,393 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:06:39,128 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:06:39,128 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:06:39,128 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:06:39,129 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:06:39,129 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:06:39,129 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:06:39,251 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A319660
+2025-06-28 20:06:39,251 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A319660
+2025-06-28 20:06:39,251 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A319660
+2025-06-28 20:06:43,937 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:06:43,937 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:06:43,937 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:06:46,647 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:06:46,647 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:06:46,647 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:06:46,647 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:06:46,647 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:06:46,647 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:06:46,766 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A005290
+2025-06-28 20:06:46,766 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A005290
+2025-06-28 20:06:46,766 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A005290
+2025-06-28 20:06:51,549 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:06:51,549 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:06:51,549 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:06:54,341 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:06:54,341 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:06:54,341 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:06:54,345 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:06:54,345 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:06:54,345 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:06:54,522 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A240810
+2025-06-28 20:06:54,522 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A240810
+2025-06-28 20:06:54,522 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A240810
+2025-06-28 20:06:59,290 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:06:59,290 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:06:59,290 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:07:02,041 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:07:02,041 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:07:02,041 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:07:02,042 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:07:02,042 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:07:02,042 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:07:02,151 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A240810
+2025-06-28 20:07:02,151 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A240810
+2025-06-28 20:07:02,151 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A240810
+2025-06-28 20:07:06,846 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:07:06,846 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:07:06,846 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:07:09,582 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:07:09,582 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:07:09,582 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:07:09,583 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:07:09,583 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:07:09,583 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:07:09,693 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A036540
+2025-06-28 20:07:09,693 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A036540
+2025-06-28 20:07:09,693 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A036540
+2025-06-28 20:07:14,695 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:07:14,695 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:07:14,695 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:07:17,598 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:07:17,598 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:07:17,598 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:07:17,612 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:07:17,612 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:07:17,612 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:07:17,858 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A092070
+2025-06-28 20:07:17,858 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A092070
+2025-06-28 20:07:17,858 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A092070
+2025-06-28 20:07:22,865 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:07:22,865 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:07:22,865 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:07:25,623 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:07:25,623 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:07:25,623 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:07:25,624 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:07:25,624 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:07:25,624 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:07:25,833 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A403870
+2025-06-28 20:07:25,833 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A403870
+2025-06-28 20:07:25,833 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A403870
+2025-06-28 20:07:30,585 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:07:30,585 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:07:30,585 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:07:33,359 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:07:33,359 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:07:33,359 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:07:33,360 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:07:33,360 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:07:33,360 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:07:33,546 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A043150
+2025-06-28 20:07:33,546 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A043150
+2025-06-28 20:07:33,546 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A043150
+2025-06-28 20:07:38,352 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:07:38,352 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:07:38,352 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:07:41,210 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:07:41,210 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:07:41,210 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:07:41,211 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:07:41,211 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:07:41,211 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:07:41,337 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A099430
+2025-06-28 20:07:41,337 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A099430
+2025-06-28 20:07:41,337 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A099430
+2025-06-28 20:07:46,173 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:07:46,173 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:07:46,173 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:07:49,035 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:07:49,035 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:07:49,035 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:07:49,035 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:07:49,035 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:07:49,035 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:07:49,192 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A100120
+2025-06-28 20:07:49,192 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A100120
+2025-06-28 20:07:49,192 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A100120
+2025-06-28 20:07:54,030 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:07:54,030 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:07:54,030 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:07:56,811 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:07:56,811 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:07:56,811 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:07:56,812 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:07:56,812 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:07:56,812 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:07:56,951 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A206640
+2025-06-28 20:07:56,951 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A206640
+2025-06-28 20:07:56,951 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A206640
+2025-06-28 20:08:01,770 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:08:01,770 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:08:01,770 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:08:04,546 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:08:04,546 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:08:04,546 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:08:04,547 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:08:04,547 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:08:04,547 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:08:04,670 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A166090
+2025-06-28 20:08:04,670 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A166090
+2025-06-28 20:08:04,670 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A166090
+2025-06-28 20:08:09,478 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:08:09,478 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:08:09,478 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:08:12,269 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:08:12,269 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:08:12,269 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:08:12,270 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:08:12,270 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:08:12,270 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:08:12,419 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A272110
+2025-06-28 20:08:12,419 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A272110
+2025-06-28 20:08:12,419 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A272110
+2025-06-28 20:08:17,251 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:08:17,251 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:08:17,251 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:08:20,012 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:08:20,012 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:08:20,012 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:08:20,013 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:08:20,013 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:08:20,013 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:08:20,160 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A104830
+2025-06-28 20:08:20,160 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A104830
+2025-06-28 20:08:20,160 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A104830
+2025-06-28 20:08:25,009 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:08:25,009 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:08:25,009 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:08:27,763 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:08:27,763 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:08:27,763 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:08:27,763 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:08:27,763 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:08:27,763 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:08:27,886 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A064760
+2025-06-28 20:08:27,886 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A064760
+2025-06-28 20:08:27,886 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A064760
+2025-06-28 20:08:32,708 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:08:32,708 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:08:32,708 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:08:35,522 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:08:35,522 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:08:35,522 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:08:35,523 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:08:35,523 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:08:35,523 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:08:35,630 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A011790
+2025-06-28 20:08:35,630 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A011790
+2025-06-28 20:08:35,630 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A011790
+2025-06-28 20:08:40,441 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:08:40,441 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:08:40,441 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:08:43,221 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:08:43,221 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:08:43,221 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:08:43,222 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:08:43,222 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:08:43,222 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:08:43,411 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A370090
+2025-06-28 20:08:43,411 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A370090
+2025-06-28 20:08:43,411 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A370090
+2025-06-28 20:08:48,235 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:08:48,235 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:08:48,235 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:08:51,040 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:08:51,040 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:08:51,040 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:08:51,041 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:08:51,041 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:08:51,041 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:39:37,320 - src.crawler.base - INFO - 로그인 완료. 검색 페이지로 이동 중...
+2025-06-28 20:39:42,457 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail
+2025-06-28 20:39:47,589 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-28 20:39:47,984 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A131970
+2025-06-28 20:39:52,966 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-28 20:39:53,205 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A319660
+2025-06-28 20:39:58,314 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-28 20:39:58,492 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A005290
+2025-06-28 20:40:03,468 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-28 20:40:03,752 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A240810
+2025-06-28 20:40:08,813 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-28 20:40:09,105 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A058470
+2025-06-28 20:40:14,181 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-28 20:40:14,418 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A036540
+2025-06-28 20:40:19,395 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-28 20:40:41,787 - src.crawler.base - INFO - 로그인 완료. 검색 페이지로 이동 중...
+2025-06-28 20:40:41,787 - src.crawler.base - INFO - 로그인 완료. 검색 페이지로 이동 중...
+2025-06-28 20:40:47,477 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail
+2025-06-28 20:40:47,477 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail
+2025-06-28 20:40:52,681 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:40:52,681 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:40:55,636 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:40:55,636 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:40:55,638 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:40:55,638 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:40:55,851 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A131970
+2025-06-28 20:40:55,851 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A131970
+2025-06-28 20:41:01,145 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:41:01,145 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:41:03,966 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:41:03,966 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:41:03,967 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:41:03,967 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:41:04,140 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A319660
+2025-06-28 20:41:04,140 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A319660
+2025-06-28 20:41:09,226 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:41:09,226 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:41:12,108 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:41:12,108 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:41:12,115 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:41:12,115 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:41:12,256 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A005290
+2025-06-28 20:41:12,256 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A005290
+2025-06-28 20:41:17,325 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:41:17,325 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:41:20,198 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:41:20,198 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:41:20,200 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:41:20,200 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:41:20,418 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A240810
+2025-06-28 20:41:20,418 - src.crawler.base - INFO - 현재 페이지: https://www.fnguide.com/Fgdc/ItemDetail#key=A240810
+2025-06-28 20:41:25,448 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:41:25,448 - src.crawler.base - INFO - 선택할 기간: 2025093
+2025-06-28 20:41:28,417 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:41:28,417 - src.crawler.base - INFO - 기간 선택 완료: 2025093
+2025-06-28 20:41:28,420 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:41:28,420 - src.crawler.base - INFO - 분기 데이터 선택 및 조회 완료
+2025-06-28 20:44:03,259 - src.crawler.base - INFO - 로그인 완료. 검색 페이지로 이동 중...
+2025-06-28 20:44:19,470 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료
+2025-06-28 20:44:33,563 - src.crawler.base - INFO - 연간 데이터 선택 및 조회 완료

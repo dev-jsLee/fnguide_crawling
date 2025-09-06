@@ -89,18 +89,27 @@ class FnGuideCrawler(BaseCrawler):
                 
     def _get_quarter_value(self):
         """설정된 연도와 분기로 value 값 생성"""
-        # 사용자 입력 받기
-        year, quarter = self._get_user_input()
+        # 이미 설정된 값이 있으면 사용
+        if self.year is not None:
+            year = self.year
+            quarter = self.quarter
+        else:
+            # 설정된 값이 없으면 사용자 입력 받기
+            year, quarter = self._get_user_input()
+        
+        self.logger.info(f"연도/분기 설정 - 연도: {year}, 분기: {quarter}")
         
         # 연간 데이터인 경우
         if quarter is None:
-            return f"{year}12"  # 연간 데이터는 12월로 설정
-            
-        # 분기 데이터인 경우
-        month_map = {1: '03', 2: '06', 3: '09', 4: '12'}
-        month = month_map.get(quarter, '01')
+            quarter_value = f"{year}12D"  # 연간 데이터는 12월 + D 접미사
+        else:
+            # 분기 데이터인 경우: yyyymmn 형식
+            month_map = {1: '03', 2: '06', 3: '09', 4: '12'}
+            month = month_map.get(quarter, '01')
+            quarter_value = f"{year}{month}{quarter}"
         
-        return f"{year}{month}{quarter}"
+        self.logger.info(f"생성된 quarter_value: {quarter_value}")
+        return quarter_value
         
     def _search_stock(self, stock_code):
         """종목 검색 수행 (페이지 이동 없이 검색만)"""
@@ -307,16 +316,23 @@ class FnGuideCrawler(BaseCrawler):
             self.logger.error(f"분기 데이터 선택 중 오류 발생: {str(e)}")
             return False
             
-    def get_item_detail(self, stock_code: str):
+    def get_item_detail(self, stock_code: str, year: int = None, quarter: int = None):
         """
         특정 종목의 상세 정보 조회
         
         Args:
             stock_code (str): 조회할 종목 코드
+            year (int): 조회할 연도 (None이면 기존 설정값 사용)
+            quarter (int): 조회할 분기 (None이면 연간 데이터)
             
         Returns:
             dict: 추출된 데이터 또는 실패 시 None
         """
+        # 연도와 분기 설정
+        if year is not None:
+            self.year = year
+        if quarter is not None:
+            self.quarter = quarter
         if self.debug_mode:
             self.logger.info(f"[디버그 모드] 종목 {stock_code} 상세정보 조회 시작")
         
@@ -345,13 +361,18 @@ class FnGuideCrawler(BaseCrawler):
             if not search_input:
                 return None
             
-            # 2. 데이터 선택 (연간/분기)
+            # 2. 데이터 선택 (연간/분기) - 먼저 연간/분기 선택
             if self.quarter is None:
                 if not self.select_annual_data():
                     return None
             else:
                 if not self.select_quarter_data():
                     return None
+            
+            # 3. 연도/분기 선택 - 연간/분기 선택 후 연도 선택
+            if not self._check_branch():
+                self.logger.error("연도/분기 선택 실패")
+                return None
             
             # 3. 콘텐츠 로딩 대기
             self._wait_debug_step("콘텐츠 로딩", 2)
@@ -387,10 +408,21 @@ class FnGuideCrawler(BaseCrawler):
         
         def login_process():
             try:
-                # ID 입력
+                # 1. 로그인 페이지로 이동
+                self.logger.info("로그인 페이지로 이동 중...")
+                if not self.get_page(LOGIN_URL):
+                    self.logger.error("로그인 페이지 이동 실패")
+                    return False
+                
+                # 2. 페이지 로딩 대기
+                time.sleep(2)
+                
+                # 3. ID 입력 필드 찾기
+                self.logger.info("ID 입력 필드 찾는 중...")
                 id_field = self.wait_for_element(
                     By.CSS_SELECTOR,
-                    SELECTORS['login']['id_field']
+                    SELECTORS['login']['id_field'],
+                    timeout=10
                 )
                 if not id_field:
                     self.logger.error("ID 입력 필드를 찾을 수 없습니다.")
@@ -400,10 +432,12 @@ class FnGuideCrawler(BaseCrawler):
                 # id_field.clear()
                 id_field.send_keys(str(USERNAME))
                 
-                # 비밀번호 입력
+                # 4. 비밀번호 입력 필드 찾기
+                self.logger.info("비밀번호 입력 필드 찾는 중...")
                 pw_field = self.wait_for_element(
                     By.CSS_SELECTOR, 
-                    SELECTORS['login']['pw_field']
+                    SELECTORS['login']['pw_field'],
+                    timeout=10
                 )
                 if not pw_field:
                     self.logger.error("비밀번호 입력 필드를 찾을 수 없습니다.")
@@ -413,10 +447,12 @@ class FnGuideCrawler(BaseCrawler):
                 pw_field.clear()
                 pw_field.send_keys(PASSWORD + Keys.RETURN)  # 비밀번호 입력 후 Enter 키 입력
                 
-                # 로그인 버튼 클릭
+                # 5. 로그인 버튼 클릭
+                self.logger.info("로그인 버튼 찾는 중...")
                 submit_button = self.wait_for_element(
                     By.CSS_SELECTOR,
-                    SELECTORS['login']['submit_button']
+                    SELECTORS['login']['submit_button'],
+                    timeout=10
                 )
                 if not submit_button:
                     self.logger.error("로그인 버튼을 찾을 수 없습니다.")
@@ -425,12 +461,26 @@ class FnGuideCrawler(BaseCrawler):
                 self._wait_debug_step("로그인 버튼 클릭")
                 submit_button.click()
                 
-                # 로그인 완료 대기
-                time.sleep(3)  # 로그인 처리 대기
+                # 6. 로그인 완료 대기
+                self.logger.info("로그인 처리 대기 중...")
+                time.sleep(5)  # 로그인 처리 대기 시간 증가
                 
-                # 로그인 후 검색 페이지로 이동
-                self.logger.info("로그인 완료. 검색 페이지로 이동 중...")
-                self.get_page(ITEM_DETAIL_URL)
+                # 7. 로그인 성공 확인
+                current_url = self.driver.current_url
+                self.logger.info(f"로그인 후 현재 URL: {current_url}")
+                
+                # 로그인 페이지에 여전히 있는지 확인
+                if "login" in current_url.lower():
+                    self.logger.error("로그인 실패 - 여전히 로그인 페이지에 있음")
+                    return False
+                
+                self.logger.info("로그인 성공 확인됨")
+                
+                # 8. 로그인 후 검색 페이지로 이동
+                self.logger.info("검색 페이지로 이동 중...")
+                if not self.get_page(ITEM_DETAIL_URL):
+                    self.logger.error("검색 페이지 이동 실패")
+                    return False
                 time.sleep(2)  # 페이지 로딩 대기
                 
                 return True
@@ -447,6 +497,10 @@ class FnGuideCrawler(BaseCrawler):
     def _check_branch(self):
         """분기 선택 확인 및 처리"""
         try:
+            # 설정된 분기 value 값 가져오기
+            self.quarter_value = self._get_quarter_value()
+            self.logger.info(f"선택할 기간: {self.quarter_value}")
+            
             # 분기 선택 드롭다운 찾기
             branch_selector = self.wait_for_element(
                 By.CSS_SELECTOR,
@@ -458,23 +512,31 @@ class FnGuideCrawler(BaseCrawler):
                 
             # 분기 선택 드롭다운 클릭
             branch_selector.click()
-            
-            # 설정된 분기 value 값 가져오기
-            self.quarter_value = self._get_quarter_value()
-            self.logger.info(f"선택할 기간: {self.quarter_value}")
+            time.sleep(0.5)  # 드롭다운 열림 대기
             
             # 해당 value를 가진 옵션 선택
-            option_selector = SELECTORS['branch']['option_template'].format(self.quarter_value)
+            option_selector = f"#selGsYm > option[value='{self.quarter_value}']"
+            self.logger.info(f"옵션 선택자: {option_selector}")
+            
             target_option = self.wait_for_element(
                 By.CSS_SELECTOR,
-                option_selector
+                option_selector,
+                timeout=5
             )
             if not target_option:
+                # 사용 가능한 옵션들을 확인
+                available_options = self.driver.find_elements(
+                    By.CSS_SELECTOR,
+                    "#selGsYm > option"
+                )
+                available_values = [opt.get_attribute('value') for opt in available_options]
                 self.logger.error(f"기간 옵션을 찾을 수 없습니다. (value: {self.quarter_value})")
+                self.logger.error(f"사용 가능한 옵션들: {available_values}")
                 return False
                 
             # 옵션 선택
             target_option.click()
+            time.sleep(0.5)  # 옵션 선택 대기
             
             # 드롭다운 닫기 (다른 요소 클릭)
             self.driver.find_element(By.TAG_NAME, "body").click()

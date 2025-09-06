@@ -1,0 +1,83 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+        python-version: ['3.11', '3.12', '3.13']
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Install uv
+      run: pip install uv
+    
+    - name: Set up environment
+      run: |
+        uv venv
+        uv sync --extra build
+    
+    - name: Run tests
+      run: |
+        uv run python -c "import src.gui.main_window; print('Import test passed')"
+    
+    - name: Build executable (Windows)
+      if: matrix.os == 'windows-latest'
+      run: |
+        uv run pyinstaller --onefile --windowed --name FnGuide_Crawler --add-data "config;config" --add-data "code.txt;." --add-data "README.md;." run_GUI.py
+    
+    - name: Build executable (Linux/macOS)
+      if: matrix.os != 'windows-latest'
+      run: |
+        uv run pyinstaller --onefile --name FnGuide_Crawler --add-data "config:config" --add-data "code.txt:." --add-data "README.md:." run_GUI.py
+    
+    - name: Create distribution package
+      run: |
+        mkdir -p dist/FnGuide_Crawler_Package
+        cp dist/FnGuide_Crawler* dist/FnGuide_Crawler_Package/ 2>/dev/null || true
+        cp code.txt dist/FnGuide_Crawler_Package/
+        cp README.md dist/FnGuide_Crawler_Package/
+        cp -r config dist/FnGuide_Crawler_Package/ 2>/dev/null || xcopy config dist\FnGuide_Crawler_Package\config\ /E /I /Q
+        mkdir -p dist/FnGuide_Crawler_Package/data
+    
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: FnGuide_Crawler_${{ matrix.os }}_Python${{ matrix.python-version }}
+        path: dist/FnGuide_Crawler_Package/
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Download all artifacts
+      uses: actions/download-artifact@v3
+    
+    - name: Create release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          **/FnGuide_Crawler*
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

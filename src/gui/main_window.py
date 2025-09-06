@@ -3,14 +3,14 @@ import re
 import json
 import os
 import pandas as pd
-from PyQt6.QtWidgets import (
+from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
     QLabel, QLineEdit, QPushButton, QComboBox, QProgressBar,
     QTextEdit, QFileDialog, QSpinBox, QMessageBox, QTableWidget,
     QTableWidgetItem, QHeaderView
 )
-from PyQt6.QtCore import Qt, QSettings
-from .crawler_worker import CrawlerWorker
+from PyQt5.QtCore import Qt, QSettings
+from .fnguide_worker import FnGuideWorker
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -74,7 +74,8 @@ class MainWindow(QMainWindow):
         period_input_layout = QHBoxLayout()
         self.year_spin = QSpinBox()
         self.year_spin.setRange(2000, 2100)
-        self.year_spin.setValue(2024)
+        from datetime import datetime
+        self.year_spin.setValue(datetime.now().year)
         self.quarter_combo = QComboBox()
         self.quarter_combo.addItems(["1분기", "2분기", "3분기", "4분기"])
         self.quarter_combo.setEnabled(False)  # 기본적으로 비활성화
@@ -85,6 +86,20 @@ class MainWindow(QMainWindow):
         period_input_layout.addWidget(self.quarter_combo)
         period_input_layout.addStretch()
         period_layout.addLayout(period_input_layout)
+        
+        # 디버그 모드 설정
+        debug_layout = QHBoxLayout()
+        self.debug_checkbox = QPushButton("디버그 모드")
+        self.debug_checkbox.setCheckable(True)
+        self.debug_checkbox.setChecked(False)  # 기본값: 비활성화
+        self.debug_checkbox.setStyleSheet("""
+            QPushButton:checked { background-color: #ff6b6b; color: white; }
+            QPushButton { padding: 5px 10px; }
+        """)
+        debug_layout.addWidget(QLabel("디버그:"))
+        debug_layout.addWidget(self.debug_checkbox)
+        debug_layout.addStretch()
+        period_layout.addLayout(debug_layout)
         
         layout.addLayout(period_layout)
         
@@ -223,16 +238,18 @@ class MainWindow(QMainWindow):
         self.data_table.setColumnCount(0)
         
         # 크롤러 작업자 초기화 및 시작
-        self.crawler_worker = CrawlerWorker(
+        debug_mode = self.debug_checkbox.isChecked()
+        self.crawler_worker = FnGuideWorker(
             stock_codes=stock_codes,
             year=year,
-            quarter=quarter
+            quarter=quarter,
+            headless=False,  # 브라우저 화면 표시
+            debug_mode=debug_mode  # GUI에서 설정한 디버그 모드
         )
-        self.crawler_worker.progress.connect(self.update_progress)
-        self.crawler_worker.log.connect(self.update_log)
-        self.crawler_worker.finished.connect(self.crawling_finished)
-        self.crawler_worker.error.connect(self.crawling_error)
-        self.crawler_worker.data_saved.connect(self.update_data_table)
+        self.crawler_worker.log_signal.connect(self.update_log)
+        self.crawler_worker.finished_signal.connect(self.crawling_finished)
+        self.crawler_worker.error_signal.connect(self.crawling_error)
+        self.crawler_worker.data_signal.connect(self.update_data_table)
         
         # UI 상태 업데이트
         self.start_btn.setEnabled(False)
